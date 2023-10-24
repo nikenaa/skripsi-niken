@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <title>{{ $judul }}</title>
     <meta content="Aplikasi Presensi Berbasis Website" name="description" />
-    <meta content="Abduloh Malela" name="author" />
+    <meta content="" name="author" />
     <link rel="shortcut icon" href="{{ asset('assets/rb.png') }}">
 
 

@@ -22,7 +22,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-9">
                 <div class="card m-b-30">
                     <div class="card-body">
                         <h3 class="card-title font-16 mt-0">Form Tambah Admin</h3>
@@ -31,7 +31,7 @@
                             @csrf
                             <input type="hidden" name="additional" value="additional">
                             <div class="table-responsive">
-                                <table class="table table-striped table-responsive nowrap">
+                                <table class="table table-striped nowrap" class="width:100% !Important;">
                                     <thead>
                                         <tr class="text-center">
                                             <th>NAMA</th>
@@ -56,12 +56,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card m-b-30">
                     <div class="card-body">
                         <h3 class="card-title font-16 mt-0">WARNING!</h3>
                         <p>Pastikan untuk tidak memasukan data yang sama agar tidak terjadi error atau malfunction kedepannya</p>
-                        <span class="blockquote-footer">Abduloh Malela</span>
+                        <span class="blockquote-footer"></span>
                     </div>
                 </div>
             </div>

@@ -37,12 +37,12 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="">Kelas</label>
-                                            <select name="kelas_id" id="" class="form-control" required>
-                                                @if ($kelas->count() > 0)
-                                                    <option value="">Pilih Kelas</option>
-                                                    <option value="0">Semua Kelas</option>
-                                                    @foreach ($kelas as $k)
+                                            <label for="">Project</label>
+                                            <select name="project_id" id="" class="form-control" required>
+                                                @if ($project->count() > 0)
+                                                    <option value="">Pilih Project</option>
+                                                    <option value="0">Semua Project</option>
+                                                    @foreach ($project as $k)
                                                         <option value="{{ $k->id }}">{{ $k->nama }}</option>
                                                     @endforeach
                                                 @else

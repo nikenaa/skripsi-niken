@@ -8,7 +8,7 @@
                     </div>
                     <div class="desc">
                         <h5 class="font-14 mb-1 text-dark pt-3">{{ $absen->siswa->nama }}</h5>
-                        <small>Kelas : {{ $absen->siswa->kelas->nama }}</small><br><br>
+                        <small>Project : {{ $absen->siswa->project->nama }}</small><br><br>
                     </div>
                 </div>
             </a>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="desc">
                         <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->siswa->nama }}</h5>
-                        <small>Kelas : {{ $i->siswa->kelas->nama }}</small><br>
+                        <small>Project : {{ $i->siswa->project->nama }}</small><br>
                         @if ($i->izinkan === 1)
                             <span class="badge badge-primary mb-2">Izin</span>
                         @endif

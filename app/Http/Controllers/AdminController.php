@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Absensi;
 use App\Models\Admin;
-use App\Models\Kelas;
-use App\Models\Siswa;
+use App\Models\Project;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,11 +15,11 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view('admin.dashboard', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Dashboard Admin',
+            'judul' => 'Presensi QR | Dashboard Admin',
             'plugin_css' => '',
             'plugin_js' => '',
-            'siswa' => Siswa::all(),
-            'kelas' => Kelas::all(),
+            'karyawan' => Karyawan::all(),
+            'project' => Project::all(),
             'absensi' => Absensi::all(),
             'data_admin' => Admin::all(),
             'admin' => Admin::firstWhere('id', session('id'))
@@ -34,7 +34,7 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.index', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Data Admin',
+            'judul' => 'Presensi QR | Data Admin',
             'plugin_css' => '
                 <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
                 <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -56,7 +56,7 @@ class AdminController extends Controller
     public function create()
     {
         return view('admin.create', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Tambah Admin',
+            'judul' => 'Presensi QR | Tambah Admin',
             'plugin_css' => '
                 
             ',
@@ -116,7 +116,7 @@ class AdminController extends Controller
     public function show(Admin $admin)
     {
         return view('admin.profile', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Profile Admin',
+            'judul' => 'Presensi QR | Profile Admin',
             'plugin_css' => '
                 
             ',

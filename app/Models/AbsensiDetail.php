@@ -12,10 +12,10 @@ class AbsensiDetail extends Model
     protected $guarded = ['id'];
     public $with = ['siswa'];
 
-    // Relasikan ke Siswa
+    // Relasikan ke Karyawan
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class);
+        return $this->belongsTo(Karyawan::class);
     }
 
 }

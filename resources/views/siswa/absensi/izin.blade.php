@@ -85,7 +85,7 @@
                         <p>Contoh Bukti<br>surat ketarangan sakit dari dokter berupa foto ataupun pdf</p>
 
                         <p>Diharuskan memasukan bukti dengan format gambar ataupun dokumen</p>
-                        <span class="blockquote-footer">Abduloh Malela</span>
+                        <span class="blockquote-footer"></span>
                     </div>
                 </div>
             </div>

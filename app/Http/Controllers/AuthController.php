@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Siswa;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -11,7 +11,7 @@ class AuthController extends Controller
     public function index()
     {
         return view('auth.login', [
-            'judul' => 'Presensi QR BY Abduloh Malela | LOGIN FORM',
+            'judul' => 'Presensi QR | LOGIN FORM',
             'admin' => Admin::first()
         ]);
     }
@@ -69,7 +69,7 @@ class AuthController extends Controller
             ');
         }
 
-        $user = Siswa::firstWhere('username', $request->username);
+        $user = Karyawan::firstWhere('username', $request->username);
         if ($user !== null) {
 
             if ($user->password !== $request->password) {

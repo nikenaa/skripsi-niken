@@ -17,7 +17,7 @@ class CreateAbsensisTable extends Migration
             $table->id();
             $table->string('kode')->unique();
             $table->string('nama');
-            $table->integer('kelas_id');
+            $table->integer('project_id');
             $table->string('tgl');
             $table->string('jam_masuk');
             $table->string('jam_keluar');

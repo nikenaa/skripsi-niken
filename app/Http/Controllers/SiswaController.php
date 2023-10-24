@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,27 +11,27 @@ class SiswaController extends Controller
     public function index()
     {
         return view('siswa.index', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Dashboard Siswa',
+            'judul' => 'Presensi QR | Dashboard Karyawan',
             'plugin_css' => '
                 
             ',
             'plugin_js' => '
                 
             ',
-            'siswa' => Siswa::firstWhere('id', session('id'))
+            'siswa' => Karyawan::firstWhere('id', session('id'))
         ]);
     }
     public function profile()
     {
         return view('siswa.profile', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Profile Siswa',
+            'judul' => 'Presensi QR | Profile Karyawan',
             'plugin_css' => '
                 
             ',
             'plugin_js' => '
                 
             ',
-            'siswa' => Siswa::firstWhere('id', session('id')),
+            'siswa' => Karyawan::firstWhere('id', session('id')),
         ]);
     }
     public function edit(Request $request)
@@ -52,7 +52,7 @@ class SiswaController extends Controller
             $data['foto'] = str_replace('assets/user/', '', $request->file('foto')->store('assets/user'));
         }
 
-        Siswa::where('id', session('id'))
+        Karyawan::where('id', session('id'))
             ->update($data);
 
         return redirect('/siswa_profile')->with('pesan', '
@@ -65,7 +65,7 @@ class SiswaController extends Controller
             </script>
         ');
     }
-    public function password(Request $request, Siswa $siswa)
+    public function password(Request $request, Karyawan $siswa)
     {
         if ($request->password != $siswa->password) {
             return redirect('siswa_profile')->with('pesan', '
@@ -79,7 +79,7 @@ class SiswaController extends Controller
             ');
         }
 
-        Siswa::where('id', $siswa->id)
+        Karyawan::where('id', $siswa->id)
             ->update(['password' => $request->password2]);
 
         return redirect('siswa_profile')->with('pesan', '

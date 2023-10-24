@@ -11,7 +11,7 @@ class Absensi extends Model
     public $table = 'absensi';
     public $timestamps = false;
     protected $guarded = ['id'];
-    protected $with = ['kelas', 'absensidetail'];
+    protected $with = ['project', 'absensidetail'];
 
     // ganti route key name
     public function getRouteKeyName()
@@ -19,10 +19,10 @@ class Absensi extends Model
         return 'kode';
     }
 
-    // Relasikan ke Kelas
-    public function kelas()
+    // Relasikan ke project
+    public function project()
     {
-        return $this->belongsTo(Kelas::class);
+        return $this->belongsTo(Project::class);
     }
 
     // Relasi Ke Detail Absensi

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Kelas;
-use App\Models\Siswa;
+use App\Models\Project;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
 class AdminSiswaController extends Controller
@@ -14,10 +14,10 @@ class AdminSiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function data_siswa()
+    public function data_karyawan()
     {
         return view('admin.siswa.index', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Data Siswa',
+            'judul' => 'Presensi QR | Data Karyawan',
             'plugin_css' => '
                 <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
                 <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -29,8 +29,8 @@ class AdminSiswaController extends Controller
                 <script src="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/responsive.bootstrap4.min.js"></script>
             ',
             'admin' => Admin::firstWhere('id', session('id')),
-            'data_siswa' => Siswa::all(),
-            'kelas' => Kelas::all()
+            'data_karyawan' => Karyawan::all(),
+            'project' => Project::all()
         ]);
     }
 
@@ -42,7 +42,7 @@ class AdminSiswaController extends Controller
     public function create()
     {
         return view('admin.siswa.create', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Tambah Siswa',
+            'judul' => 'Presensi QR | Tambah Karyawan',
             'plugin_css' => '
                 
             ',
@@ -50,8 +50,8 @@ class AdminSiswaController extends Controller
                 
             ',
             'admin' => Admin::firstWhere('id', session('id')),
-            'data_siswa' => Siswa::all(),
-            'kelas' => Kelas::all()
+            'data_karyawan' => Karyawan::all(),
+            'project' => Project::all()
         ]);
     }
 
@@ -71,7 +71,7 @@ class AdminSiswaController extends Controller
             array_push($data, [
                 'no_induk'=> $ni,
                 'nama' => $request->nama[$i],
-                'kelas_id' => $request->kelas_id[$i],
+                'project_id' => $request->project_id[$i],
                 'jenis_kelamin' => $request->jenis_kelamin[$i],
                 'username' => $ni,
                 'password' => $ni,
@@ -85,8 +85,8 @@ class AdminSiswaController extends Controller
             $i++;
         }
 
-        Siswa::insert($data);
-        return redirect('/data_siswa')->with('pesan', '
+        Karyawan::insert($data);
+        return redirect('/data_karyawan')->with('pesan', '
             <script>
                 Swal.fire(
                     "Success!",
@@ -100,10 +100,10 @@ class AdminSiswaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Siswa  $siswa
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function show(Siswa $siswa)
+    public function show(Karyawan $karyawan)
     {
         //
     }
@@ -111,10 +111,10 @@ class AdminSiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Siswa  $siswa
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Siswa $siswa)
+    public function edit(Karyawan $karyawan)
     {
         //
     }
@@ -123,21 +123,21 @@ class AdminSiswaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Siswa  $siswa
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Siswa $siswa)
+    public function update(Request $request, Karyawan $karyawan)
     {
         $data = [
             'no_induk' => $request->no_induk,
             'nama' => $request->nama,
-            'kelas_id' => $request->kelas_id,
+            'project_id' => $request->project_id,
             'is_active' => $request->is_active,
         ];
 
-        Siswa::where('id', $siswa->id)
+        Karyawan::where('id', $karyawan->id)
             ->update($data);
-        return redirect('/data_siswa')->with('pesan', '
+        return redirect('/data_karyawan')->with('pesan', '
             <script>
                 Swal.fire(
                     "Success!",
@@ -151,13 +151,13 @@ class AdminSiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Siswa  $siswa
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Siswa $siswa)
+    public function destroy(Karyawan $karyawan)
     {
-        Siswa::destroy($siswa->id);
-        return redirect('/data_siswa')->with('pesan', '
+        Karyawan::destroy($karyawan->id);
+        return redirect('/data_karyawan')->with('pesan', '
             <script>
                 Swal.fire(
                     "Success!",

@@ -36,7 +36,7 @@
                                                 <th class="th">Nama Absensi</th>
                                                 <th class="th">Tanggal</th>
                                                 <th class="th">Jam</th>
-                                                <th class="th">Kelas</th>
+                                                <th class="th">Project</th>
                                                 <th class="th">Opsi</th>
                                             </tr>
                                         </thead>
@@ -48,7 +48,7 @@
                                                     <td align="center">{{ $absensi->tgl }}</td>
                                                     <td align="center">{{ $absensi->jam_masuk }} - {{ $absensi->jam_keluar }}</td>
                                                     <td align="center">
-                                                        {{ ($absensi->kelas_id === 0) ? 'Semua Kelas' : $absensi->kelas->nama }}
+                                                        {{ ($absensi->project_id === 0) ? 'Semua Project' : $absensi->project->nama }}
                                                     </td>
                                                     <td align="center">
 

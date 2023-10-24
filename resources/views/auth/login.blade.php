@@ -293,7 +293,7 @@
             <div class="login__forms">
                 <form action="{{ url("/login") }}" method="POST" class="login__registre" id="login-in">
                     @csrf
-                    <!-- <div class="copyright"><small><strong>E-Presensi | By Abduloh Malela</strong></small></div> -->
+                    <!-- <div class="copyright"><small><strong>E-Presensi | By </strong></small></div> -->
                     <h1 class="login__title">Sign In</h1>
 
                     <div class="login__box">
@@ -317,7 +317,7 @@
                 <form action="{{ url('/install') }}" method="POST" class="login__create none" id="login-up">
                     @csrf
                     <div class="login__create_inside">
-                        <!-- <div class="copyright"><small><strong>E-Presensi | By Abduloh Malela</strong></small></div> -->
+                        <!-- <div class="copyright"><small><strong>E-Presensi | By </strong></small></div> -->
                         <h1 class="login__title">Create Account</h1>
 
                         <div class="login__box">

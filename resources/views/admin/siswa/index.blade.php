@@ -8,13 +8,13 @@
             <div class="page-title-box">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
-                        <h4 class="page-title">Students List</h4>
+                        <h4 class="page-title">Karyawan List</h4>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">E-Presensi</a></li>
                             <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Students List</li>
+                            <li class="breadcrumb-item active">Karyawan List</li>
                         </ol>
                     </div>
                 </div>
@@ -25,16 +25,16 @@
                 <div class="col-12">
                     <div class="card m-b-30">
                         <div class="card-body">
-                            <h3 class="card-title font-16 mt-0">Students Data List</h3>
-                            <a href="{{ url('/admin/siswa/create') }}" class="btn btn-outline-primary m-b-10">Tambah data Siswa</a>
-                            @if ($data_siswa->count() > 0)
+                            <h3 class="card-title font-16 mt-0">Karyawan Data List</h3>
+                            <a href="{{ url('/admin/siswa/create') }}" class="btn btn-outline-primary m-b-10">Tambah data Karyawan</a>
+                            @if ($data_karyawan->count() > 0)
                                 <table id="datatable" class="table table-bordered text-nowrap" style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <th class="th">#</th>
                                             <th class="th">NIM</th>
                                             <th class="th">NAMA</th>
-                                            <th class="th">KELAS</th>
+                                            <th class="th">PROJECT</th>
                                             <th class="th">JK</th>
                                             <th class="th">ACTIVE</th>
                                             <th class="th">IMAGE</th>
@@ -42,13 +42,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data_siswa as $siswa)
+                                        @foreach ($data_karyawan as $siswa)
                                             <tr>
                                                 <td align="center">{{ $loop->iteration }}</td>
                                                 <td align="center">{{ $siswa->no_induk }}</td>
                                                 <td align="center">{{ $siswa->nama }}</td>
                                                 <td align="center">
-                                                    {{ $siswa->kelas->nama }}
+                                                    {{ $siswa->project->nama }}
                                                 </td>
                                                 <td align="center">{{ $siswa->jenis_kelamin }}</td>
                                                 <td align="center">
@@ -62,7 +62,7 @@
                                                     <img src="{{ asset('assets/user/' . $siswa->foto) }}" alt="" class="rounded-circle thumb-sm">
                                                 </td>
                                                 <td align="center">
-                                                    <a href="javascript:void(0);" class="btn btn-success btn-edit-siswa" data-toggle="modal" data-no_induk="{{ $siswa->no_induk }}" data-id="{{ $siswa->id }}" data-nama="{{ $siswa->nama }}" data-kelas_id="{{ $siswa->kelas_id }}" data-is_active="{{ $siswa->is_active }}" data-target="#modaleditsiswa"><i class="mdi mdi-cogs"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-success btn-edit-siswa" data-toggle="modal" data-no_induk="{{ $siswa->no_induk }}" data-id="{{ $siswa->id }}" data-nama="{{ $siswa->nama }}" data-project_id="{{ $siswa->project_id }}" data-is_active="{{ $siswa->is_active }}" data-target="#modaleditsiswa"><i class="mdi mdi-cogs"></i></a>
                                                     
                                                     <form action="{{ url('/admin/siswa/' . $siswa->id) }}" method="post" style="display: inline">
                                                         @method('DELETE')
@@ -116,10 +116,10 @@
                         <div class="row">
                             <div class="col-md">
                                 <div class="form-group">
-                                    <label for="">Kelas</label>
-                                    <select name="kelas_id" class="form-control">
-                                        <!-- <option value="">Kelas</option> -->
-                                        @foreach ($kelas as $k)
+                                    <label for="">Project</label>
+                                    <select name="project_id" class="form-control">
+                                        <!-- <option value="">Project</option> -->
+                                        @foreach ($project as $k)
                                             <option value="{{ $k->id }}">{{ $k->nama }}</option>
                                         @endforeach
                                     </select>
@@ -145,7 +145,7 @@
     <!-- MODAL EDIT -->
 
     <script>
-        $(".btn-edit-siswa").click(function(){var a=$(this).data("id"),t=$(this).data("no_induk"),i=$(this).data("nama"),n=$(this).data("kelas_id"),e=$(this).data("is_active"),a="{{ url('/admin/siswa') }}/"+a;$("input[name=nama]").val(i),$("input[name=no_induk]").val(t),$("select[name=kelas_id]").val(n),$("select[name=is_active]").val(e),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
+        $(".btn-edit-siswa").click(function(){var a=$(this).data("id"),t=$(this).data("no_induk"),i=$(this).data("nama"),n=$(this).data("project_id"),e=$(this).data("is_active"),a="{{ url('/admin/siswa') }}/"+a;$("input[name=nama]").val(i),$("input[name=no_induk]").val(t),$("select[name=project_id]").val(n),$("select[name=is_active]").val(e),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
     </script>
     {!! session('pesan') !!}
 

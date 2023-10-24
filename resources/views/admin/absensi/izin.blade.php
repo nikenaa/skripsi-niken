@@ -35,7 +35,7 @@
                                                 <th class="th">#</th>
                                                 <th class="th">NAMA</th>
                                                 <th class="th">NO INDUK</th>
-                                                <th class="th">KELAS</th>
+                                                <th class="th">PROJECT</th>
                                                 <th class="th">IZIN</th>
                                                 <th class="th">SUKET</th>
                                                 <th class="th">STATUS</th>
@@ -47,7 +47,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $izin->siswa->nama }}</td>
                                                     <td>{{ $izin->siswa->no_induk }}</td>
-                                                    <td>{{ $izin->siswa->kelas->nama }}</td>
+                                                    <td>{{ $izin->siswa->project->nama }}</td>
                                                     <td>{{ $izin->keterangan }}</td>
                                                     <td>
                                                         <a href="{{ url('/suket_izin/' . $izin->suket) }}" class="btn btn-success">Unduh</a>

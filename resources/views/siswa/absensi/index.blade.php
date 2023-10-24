@@ -31,18 +31,18 @@
                                     <th class="th">NAMA</th>
                                     <th class="th">TANGGAL</th>
                                     <th class="th">JAM</th>
-                                    <th class="th">KELAS</th>
+                                    <th class="th">PROJECT</th>
                                     <th class="th">ABSEN</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($presensi_list->sortBy('id') as $presensi)
-                                    @if ($presensi->kelas_id == $siswa->kelas_id)
+                                    @if ($presensi->project_id == $siswa->project_id)
                                         <tr>
                                             <td align="center">{{ $presensi->nama }}</td>
                                             <td align="center">{{ $presensi->tgl }}</td>
                                             <td align="center">{{ $presensi->jam_masuk }} - {{ $presensi->jam_keluar }}</td>
-                                            <td align="center">{{ ($presensi->kelas_id === 0) ? 'Semua Kelas' : $presensi->kelas->nama }}</td>
+                                            <td align="center">{{ ($presensi->project_id === 0) ? 'Semua Project' : $presensi->project->nama }}</td>
                                             <td align="center">
                                                 <div class="btn-group">
                                                     <a href="{{ url('siswa/absensi/' . $presensi->kode) }}" class="btn btn-primary">Masuk</a>
@@ -52,12 +52,12 @@
                                             </td>
                                         </tr>
                                     @else
-                                        @if ($presensi->kelas_id == 0)
+                                        @if ($presensi->project_id == 0)
                                             <tr>
                                                 <td align="center">{{ $presensi->nama }}</td>
                                                 <td align="center">{{ $presensi->tgl }}</td>
                                                 <td align="center">{{ $presensi->jam_masuk }} - {{ $presensi->jam_keluar }}</td>
-                                                <td align="center">{{ ($presensi->kelas_id === 0) ? 'Semua Kelas' : $presensi->kelas->nama }}</td>
+                                                <td align="center">{{ ($presensi->project_id === 0) ? 'Semua Project' : $presensi->project->nama }}</td>
                                                 <td align="center">
                                                     <div class="btn-group">
                                                         <a href="{{ url('siswa/absensi/' . $presensi->kode) }}" class="btn btn-primary">Masuk</a>

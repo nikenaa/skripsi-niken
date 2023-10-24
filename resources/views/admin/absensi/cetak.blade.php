@@ -33,13 +33,13 @@
         <table width="100%" class="text-center">
             <tr>
                 <th style="">Nama Absen</th>
-                <th style="">Kelas</th>
+                <th style="">Project</th>
                 <th style="">Tanggal</th>
                 <th style="">Jam</th>
             </tr>
             <tr>
                 <td style=" background: trasparent">{{ $absensi->nama }}</td>
-                <td style=" background: trasparent">{{ ($absensi->kelas_id === 0) ? 'Semua Kelas' : $absensi->kelas->nama }}</td>
+                <td style=" background: trasparent">{{ ($absensi->project_id === 0) ? 'Semua Project' : $absensi->project->nama }}</td>
                 <td style=" background: trasparent">{{ $absensi->tgl }}</td>
                 <td style=" background: trasparent">{{ $absensi->jam_masuk }} - {{ $absensi->jam_keluar }}</td>
             </tr>
@@ -51,9 +51,9 @@
         <h4 class="mt-4" style="text-align: center;">List Sudah Presensi</h4>
         <table class="table text-center" width="100%">
             <tr>
-                <th>NAMA SISWA</th>
+                <th>NAMA KARYAWAN</th>
                 <th>NO INDUK</th>
-                <th>KELAS</th>
+                <th>PROJECT</th>
                 <th>ABSEN MASUK</th>
                 <th>STATUS</th>
                 <th>ABSEN PULANG</th>
@@ -64,7 +64,7 @@
                     <tr>
                         <td>{{ $absen->siswa->nama }}</td>
                         <td>{{ $absen->siswa->no_induk }}</td>
-                        <td>{{ $absen->siswa->kelas->nama }}</td>
+                        <td>{{ $absen->siswa->project->nama }}</td>
                         <td>{{ ($absen->absen_masuk === null) ? '-' : Str::substr($absen->absen_masuk, 11, 5) }}</td>
                         <td>
                             @if ($absen->telat === 0) sukses @endif
@@ -89,15 +89,15 @@
         <h4 class="mt-4" style="text-align: center;">List Belum Presensi</h4>
         <table class="table text-center" width="100%">
             <tr>
-                <th>NAMA SISWA</th>
+                <th>NAMA KARYAWAN</th>
                 <th>NO INDUK</th>
-                <th>KELAS</th>
+                <th>PROJECT</th>
             </tr>
             @foreach ($belum_absen as $absen)
                 <tr>
                     <td>{{ $absen->siswa->nama }}</td>
                     <td>{{ $absen->siswa->no_induk }}</td>
-                    <td>{{ $absen->siswa->kelas->nama }}</td>
+                    <td>{{ $absen->siswa->project->nama }}</td>
                 </tr>
             @endforeach
         </table>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Kelas;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class AdminKelasController extends Controller
@@ -16,7 +16,7 @@ class AdminKelasController extends Controller
     public function index()
     {
         return view('admin.kelas.index', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Data Kelas',
+            'judul' => 'Presensi QR | Data Project',
             'plugin_css' => '
                 <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
                 <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -26,7 +26,7 @@ class AdminKelasController extends Controller
                 <script src="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/dataTables.bootstrap4.min.js"></script>
             ',
             'admin' => Admin::firstWhere('id', session('id')),
-            'data_kelas' => Kelas::all()
+            'data_project' => Project::all()
         ]);
     }
 
@@ -38,7 +38,7 @@ class AdminKelasController extends Controller
     public function create()
     {
         return view('admin.kelas.create', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Tambah Kelas',
+            'judul' => 'Presensi QR | Tambah Project',
             'plugin_css' => '
 
             ',
@@ -57,16 +57,16 @@ class AdminKelasController extends Controller
      */
     public function store(Request $request)
     {
-        $kelass = $request->nama;
+        $projects = $request->nama;
         $data = [];
-        foreach ($kelass as $kelas) {
+        foreach ($projects as $project) {
             array_push($data, [
-                'nama' => $kelas
+                'nama' => $project
             ]);
         }
 
-        Kelas::insert($data);
-        return redirect('/data_kelas')->with('pesan', '
+        Project::insert($data);
+        return redirect('/data_project')->with('pesan', '
             <script>
                 Swal.fire(
                     "Success!",
@@ -80,10 +80,10 @@ class AdminKelasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kelas  $kelas
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Kelas $kelas)
+    public function show(Project $project)
     {
         //
     }
@@ -91,10 +91,10 @@ class AdminKelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kelas  $kelas
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kelas $kelas)
+    public function edit(Project $project)
     {
         //
     }
@@ -103,16 +103,16 @@ class AdminKelasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kelas  $kelas
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelas $kela)
+    public function update(Request $request, Project $kela)
     {
         // dd($kela);
-        Kelas::where('id', $kela->id)
+        Project::where('id', $kela->id)
             ->update(['nama' => $request->nama]);
 
-        return redirect('/data_kelas')->with('pesan', '
+        return redirect('/data_project')->with('pesan', '
             <script>
                 Swal.fire(
                     "Success!",
@@ -126,14 +126,14 @@ class AdminKelasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kelas  $kelas
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $kela)
+    public function destroy(Project $kela)
     {
-        Kelas::destroy($kela->id);
+        Project::destroy($kela->id);
 
-        return redirect('/data_kelas')->with('pesan', '
+        return redirect('/data_project')->with('pesan', '
             <script>
                 Swal.fire(
                     "Success!",

@@ -12,7 +12,7 @@
                         </div>
                         <div class="desc">
                             <h5 class="font-14 mb-1 text-dark">{{ $absen->siswa->nama }}</h5>
-                            <small>Kelas : {{ $absen->siswa->kelas->nama }}</small><br>
+                            <small>Project : {{ $absen->siswa->project->nama }}</small><br>
                         </div>
                     </div>
                 </a>

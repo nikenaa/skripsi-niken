@@ -83,14 +83,14 @@
                                        <ul>
                                            <li><a href="{{ url('/admin/' . $admin->id) }}">Profile</a></li>
                                            <li><a href="{{ url('/admin') }}">Admin</a></li>
-                                           <li><a href="{{ url('/data_siswa') }}">Students</a></li>
+                                           <li><a href="{{ url('/data_karyawan') }}">Karyawan</a></li>
                                        </ul>
                                    </li>
                                </ul>
                            </li>
 
                            <li class="has-submenu">
-                               <a href="{{ url('/data_kelas') }}"><i class="icon-pencil-ruler"></i> Class</a>
+                               <a href="{{ url('/data_project') }}"><i class="icon-pencil-ruler"></i> Project</a>
                            </li>
 
                            <li class="has-submenu">

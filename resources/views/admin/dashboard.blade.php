@@ -28,9 +28,9 @@
                                 <i class="mdi mdi-account-supervisor-outline bg-primary  text-white"></i>
                             </div>
                             <div>
-                                <h5 class="font-16">Students</h5>
+                                <h5 class="font-16">Karyawan</h5>
                             </div>
-                            <h3 class="mt-4">{{ $siswa->count() }}</h3>
+                            <h3 class="mt-4">{{ $karyawan->count() }}</h3>
                         </div>
                     </div>
                 </div>
@@ -42,9 +42,9 @@
                                 <i class="mdi mdi-google-classroom bg-success text-white"></i>
                             </div>
                             <div>
-                                <h5 class="font-16">Classes</h5>
+                                <h5 class="font-16">Project</h5>
                             </div>
-                            <h3 class="mt-4">{{ $kelas->count() }}</h3>
+                            <h3 class="mt-4">{{ $project->count() }}</h3>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">E-Presensi</a></li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Siswa</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Karyawan</a></li>
                         <li class="breadcrumb-item active">Profile</li>
                     </ol>
                 </div>
@@ -50,8 +50,8 @@
                                 </div>
                                 <div class="col-md">
                                     <div class="form-group">
-                                        <label for="">Kelas</label>
-                                        <input type="text" name="kelas_id" value="{{ $siswa->kelas->nama }}" class="form-control" readonly>
+                                        <label for="">Project</label>
+                                        <input type="text" name="project_id" value="{{ $siswa->project->nama }}" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md">

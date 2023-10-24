@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa;
+use App\Models\Karyawan;
 use App\Models\Absensi;
 use Illuminate\Http\Request;
 use App\Models\AbsensiDetail;
@@ -20,7 +20,7 @@ class SiswaAbsenController extends Controller
     {
         $absensi_all = Absensi::all();
         return view('siswa.absensi.index', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Absensi',
+            'judul' => 'Presensi QR | Absensi',
             'plugin_css' => '
                 <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
                 <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@ class SiswaAbsenController extends Controller
                 <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/jquery.dataTables.min.js"></script>
                 <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.js"></script>
             ',
-            'siswa' => Siswa::firstWhere('id', session('id')),
+            'karyawan' => Karyawan::firstWhere('id', session('id')),
             'presensi_list' => $absensi_all,
         ]);
     }
@@ -63,11 +63,11 @@ class SiswaAbsenController extends Controller
      */
     public function show(Absensi $absensi)
     {
-        $absensi_siswa = AbsensiDetail::where('kode', $absensi->kode)
-            ->where('siswa_id', session('id'))
+        $absensi_karyawan = AbsensiDetail::where('kode', $absensi->kode)
+            ->where('karyawan_id', session('id'))
             ->first();
         return view('siswa.absensi.show', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Absensi Masuk',
+            'judul' => 'Presensi QR | Absensi Masuk',
             'plugin_css' => '
                 
             ',
@@ -75,19 +75,19 @@ class SiswaAbsenController extends Controller
                 <script src="' . asset('assets') . '/qr/adapter.min.js"></script>
                 <script src="' . asset('assets/template/presensi-abdul/horizontal/assets/js/core.min.js') . '"></script>
             ',
-            'siswa' => Siswa::firstWhere('id', session('id')),
+            'karyawan' => Karyawan::firstWhere('id', session('id')),
             'absensi' => $absensi,
-            'absensi_siswa' => $absensi_siswa,
+            'absensi_karyawan' => $absensi_karyawan,
         ]);
     }
     public function show_keluar(Absensi $absensi)
     {
-        $absensi_siswa = AbsensiDetail::where('kode', $absensi->kode)
-            ->where('siswa_id', session('id'))
+        $absensi_karyawan = AbsensiDetail::where('kode', $absensi->kode)
+            ->where('karyawan_id', session('id'))
             ->first();
 
         return view('siswa.absensi.show-keluar', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Absensi Keluar',
+            'judul' => 'Presensi QR | Absensi Keluar',
             'plugin_css' => '
                 
             ',
@@ -95,9 +95,9 @@ class SiswaAbsenController extends Controller
                 <script src="' . asset('assets') . '/qr/adapter.min.js"></script>
                 <script src="' . asset('assets/template/presensi-abdul/horizontal/assets/js/core.min.js') . '"></script>
             ',
-            'siswa' => Siswa::firstWhere('id', session('id')),
+            'karyawan' => Karyawan::firstWhere('id', session('id')),
             'absensi' => $absensi,
-            'absensi_siswa' => $absensi_siswa,
+            'absensi_karyawan' => $absensi_karyawan,
         ]);
     }
 
@@ -155,7 +155,7 @@ class SiswaAbsenController extends Controller
             ];
 
             AbsensiDetail::where('kode', $absensi->kode)
-                ->where('siswa_id', session('id'))
+                ->where('karyawan_id', session('id'))
                 ->update($data);
 
             return 'success';
@@ -173,7 +173,7 @@ class SiswaAbsenController extends Controller
             ];
 
             AbsensiDetail::where('kode', $absensi->kode)
-                ->where('siswa_id', session('id'))
+                ->where('karyawan_id', session('id'))
                 ->update($data);
 
             return 'success';
@@ -181,20 +181,20 @@ class SiswaAbsenController extends Controller
     }
     public function izin(Absensi $absensi)
     {
-        $absensi_siswa = AbsensiDetail::where('kode', $absensi->kode)
-            ->where('siswa_id', session('id'))
+        $absensi_karyawan = AbsensiDetail::where('kode', $absensi->kode)
+            ->where('karyawan_id', session('id'))
             ->first();
         return view('siswa.absensi.izin', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Izin Absensi',
+            'judul' => 'Presensi QR | Izin Absensi',
             'plugin_css' => '
                 
             ',
             'plugin_js' => '
                 
             ',
-            'siswa' => Siswa::firstWhere('id', session('id')),
+            'karyawan' => Karyawan::firstWhere('id', session('id')),
             'absensi' => $absensi,
-            'absensi_siswa' => $absensi_siswa,
+            'absensi_karyawan' => $absensi_karyawan,
         ]);
     }
     public function izin_(Absensi $absensi, Request $request)
@@ -204,7 +204,7 @@ class SiswaAbsenController extends Controller
         $data['keterangan'] = $request->keterangan;
 
         AbsensiDetail::where('kode', $absensi->kode)
-            ->where('siswa_id', session('id'))
+            ->where('karyawan_id', session('id'))
             ->update($data);
 
         return redirect('/siswa/izin/' . $absensi->kode)->with('pesan', '

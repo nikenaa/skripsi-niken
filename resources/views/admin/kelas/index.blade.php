@@ -8,24 +8,24 @@
         <div class="page-title-box">
             <div class="row align-items-center">
                 <div class="col-sm-6">
-                    <h4 class="page-title">Classes</h4>
+                    <h4 class="page-title">Projects</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">E-Presensi</a></li>
-                        <li class="breadcrumb-item active">Classes</li>
+                        <li class="breadcrumb-item active">Projects</li>
                     </ol>
                 </div>
             </div>
             <!-- end row -->
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-12">
                 <div class="card m-b-30">
                     <div class="card-body">
-                        <h4 class="card-title font-16 mt-0">Class List</h4>
-                        <a href="{{ url('/admin/kelas/create') }}" class="btn btn-outline-primary m-b-10">Tambah data Kelas</a>
-                        @if ($data_kelas->count() > 0)
+                        <h4 class="card-title font-16 mt-0">Project List</h4>
+                        <a href="{{ url('/admin/kelas/create') }}" class="btn btn-outline-primary m-b-10">Tambah Project</a>
+                        @if ($data_project->count() > 0)
                             <div class="table-responsive">
                                 <table id="datatable" class="table table-bordered nowrap" style="width: 100%;">
                                     <thead>
@@ -36,13 +36,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data_kelas as $kelas)
+                                        @foreach ($data_project as $project)
                                             <tr>
                                                 <td align="center">{{ $loop->iteration }}</td>
-                                                <td align="center">{{ $kelas->nama; }}</td>
+                                                <td align="center">{{ $project->nama; }}</td>
                                                 <td align="center">
-                                                    <a href="javascript:void(0);" class="btn btn-success btn-edit-class" data-toggle="modal" data-id="{{ $kelas->id }}" data-nama="{{ $kelas->nama }}" data-target="#modaleditclass"><i class="mdi mdi-cogs"></i></a>
-                                                    <form action="{{ url('/admin/kelas/' . $kelas->id) }}" method="post" style="display: inline">
+                                                    <a href="javascript:void(0);" class="btn btn-success btn-edit-class" data-toggle="modal" data-id="{{ $project->id }}" data-nama="{{ $project->nama }}" data-target="#modaleditclass"><i class="mdi mdi-cogs"></i></a>
+                                                    <form action="{{ url('/admin/kelas/' . $project->id) }}" method="post" style="display: inline">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-hapus"><i class="mdi mdi-trash-can-outline"></i></button>

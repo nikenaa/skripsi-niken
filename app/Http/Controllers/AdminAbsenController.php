@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Kelas;
-use App\Models\Siswa;
+use App\Models\Project;
+use App\Models\Karyawan;
 use App\Models\Absensi;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class AdminAbsenController extends Controller
     public function index()
     {
         return view('admin.absensi.index', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Data Absensi',
+            'judul' => 'Presensi QR | Data Absensi',
             'plugin_css' => '
                 <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
                 <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -43,7 +43,7 @@ class AdminAbsenController extends Controller
     public function create()
     {
         return view('admin.absensi.create', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Tambah Absensi',
+            'judul' => 'Presensi QR | Tambah Absensi',
             'plugin_css' => '
                 
             ',
@@ -51,7 +51,7 @@ class AdminAbsenController extends Controller
                 
             ',
             'admin' => Admin::firstWhere('id', session('id')),
-            'kelas' => Kelas::all()
+            'project' => Project::all()
         ]);
     }
 
@@ -63,18 +63,18 @@ class AdminAbsenController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->kelas_id == 0) {
-            $siswa = Siswa::all();
+        if ($request->project_id == 0) {
+            $karyawan = Karyawan::all();
         } else {
-            $siswa = Siswa::where('kelas_id', $request->kelas_id)
+            $karyawan = Karyawan::where('project_id', $request->project_id)
                 ->get();
         }
-        if ($siswa->count() == 0) {
+        if ($karyawan->count() == 0) {
             return redirect('/admin/absensi/create')->with('pesan', '
                 <script>
                     Swal.fire(
                         "Error!",
-                        "data siswa belum ada!",
+                        "data karyawan belum ada!",
                         "error"
                     )
                 </script>
@@ -85,16 +85,16 @@ class AdminAbsenController extends Controller
         $absensi = [
             'kode' => $kode,
             'nama' => $request->nama,
-            'kelas_id' => $request->kelas_id,
+            'project_id' => $request->project_id,
             'tgl' => $request->tgl,
             'jam_masuk' => $request->jam_masuk,
             'jam_keluar' => $request->jam_keluar,
         ];
         $detail_absensi = [];
-        foreach ($siswa as $s) {
+        foreach ($karyawan as $s) {
             array_push($detail_absensi, [
                 'kode' => $kode,
-                'siswa_id' => $s->id,
+                'karyawan_id' => $s->id,
             ]);
         }
         Absensi::create($absensi);
@@ -119,7 +119,7 @@ class AdminAbsenController extends Controller
     public function show(Absensi $absensi)
     {
         return view('admin.absensi.show', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Detail Absensi Masuk',
+            'judul' => 'Presensi QR | Detail Absensi Masuk',
             'plugin_css' => '
                 
             ',
@@ -133,7 +133,7 @@ class AdminAbsenController extends Controller
     public function show_keluar(Absensi $absensi)
     {
         return view('admin.absensi.show-keluar', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Detail Absensi Keluar',
+            'judul' => 'Presensi QR | Detail Absensi Keluar',
             'plugin_css' => '
                 
             ',
@@ -220,7 +220,7 @@ class AdminAbsenController extends Controller
     }
     public function cetak(Absensi $absensi)
     {
-        $absensi_siswa = AbsensiDetail::where('kode', $absensi->kode)
+        $absensi_karyawan = AbsensiDetail::where('kode', $absensi->kode)
             ->whereNotNull('updated_at')
             ->get();
 
@@ -231,7 +231,7 @@ class AdminAbsenController extends Controller
 
         return view('admin.absensi.cetak', [
             'absensi' => $absensi,
-            'absensi_siswa' => $absensi_siswa,
+            'absensi_karyawan' => $absensi_karyawan,
             'belum_absen' => $belum_absen
         ]);
     }
@@ -264,7 +264,7 @@ class AdminAbsenController extends Controller
             ->get();
 
         return view('admin.absensi.izin', [
-            'judul' => 'Presensi QR BY Abduloh Malela | Izin Absensi',
+            'judul' => 'Presensi QR | Izin Absensi',
             'plugin_css' => '
                 
             ',
