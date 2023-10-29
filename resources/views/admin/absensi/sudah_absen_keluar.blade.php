@@ -24,10 +24,10 @@
                     <div class="desc">
                         <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->siswa->nama }}</h5>
                         <small>Project : {{ $i->siswa->project->nama }}</small><br>
-                        @if ($i->izinkan === 1)
+                        @if ($i->izinkan == 1)
                             <span class="badge badge-primary mb-2">Izin</span>
                         @endif
-                        @if ($i->izinkan === 0)
+                        @if ($i->izinkan == 0)
                             <span class="badge badge-warning mb-2">Pending Izin</span>
                         @endif
                     </div>

@@ -3,7 +3,7 @@
         $ml = '';
     @endphp
     @foreach ($absensi as $absen)
-        @if ($absen->izinkan === null)
+        @if ($absen->izinkan == null)
             <div class="col-lg-3">
                 <a href="javascript:void(0);" class="friends-suggestions-list pb-4">
                     <div class="position-relative shadow p-2 rounded mt-2">

@@ -48,7 +48,7 @@
                                             <td align="center">{{ $dm->username; }}</td>
                                             <td align="center">{{ $dm->created_at }}</td>
                                             <td align="center">
-                                                @if ($dm->is_active === 1)
+                                                @if ($dm->is_active == 1)
                                                     <span class="badge badge-pill badge-primary">Yes</span>
                                                 @else
                                                     <span class="badge badge-pill badge-danger">No</span> 

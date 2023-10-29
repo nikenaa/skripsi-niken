@@ -53,7 +53,7 @@
                                                         <a href="{{ url('/suket_izin/' . $izin->suket) }}" class="btn btn-success">Unduh</a>
                                                     </td>
                                                     <td>
-                                                        @if ($izin->izinkan === 0)
+                                                        @if ($izin->izinkan == 0)
                                                             <a href="{{ url('/izinkan/' . $izin->id) }}" class="badge badge-warning btn-izinkan">Pending</a>
                                                         @else
                                                             <span class="badge badge-success">Di Izinkan</span>

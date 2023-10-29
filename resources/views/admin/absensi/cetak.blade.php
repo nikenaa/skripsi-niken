@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <td style=" background: trasparent">{{ $absensi->nama }}</td>
-                <td style=" background: trasparent">{{ ($absensi->project_id === 0) ? 'Semua Project' : $absensi->project->nama }}</td>
+                <td style=" background: trasparent">{{ ($absensi->project_id == 0) ? 'Semua Project' : $absensi->project->nama }}</td>
                 <td style=" background: trasparent">{{ $absensi->tgl }}</td>
                 <td style=" background: trasparent">{{ $absensi->jam_masuk }} - {{ $absensi->jam_keluar }}</td>
             </tr>
@@ -65,20 +65,20 @@
                         <td>{{ $absen->siswa->nama }}</td>
                         <td>{{ $absen->siswa->no_induk }}</td>
                         <td>{{ $absen->siswa->project->nama }}</td>
-                        <td>{{ ($absen->absen_masuk === null) ? '-' : Str::substr($absen->absen_masuk, 11, 5) }}</td>
+                        <td>{{ ($absen->absen_masuk == null) ? '-' : Str::substr($absen->absen_masuk, 11, 5) }}</td>
                         <td>
-                            @if ($absen->telat === 0) sukses @endif
-                            @if ($absen->telat === 1) terlambat @endif
-                            @if ($absen->telat === null) izin @endif
+                            @if ($absen->telat == 0) sukses @endif
+                            @if ($absen->telat == 1) terlambat @endif
+                            @if ($absen->telat == null) izin @endif
                         </td>
                         <td>
                             @if ($absen->izinkan !== null)
                                 -
                             @else
-                                {{ ($absen->absen_keluar === null) ? 'belum absen' : Str::substr($absen->absen_keluar, 11, 5) }}
+                                {{ ($absen->absen_keluar == null) ? 'belum absen' : Str::substr($absen->absen_keluar, 11, 5) }}
                             @endif
                         </td>
-                        <td>{{ ($absen->keterangan === null) ? '-' : $absen->keterangan }}</td>
+                        <td>{{ ($absen->keterangan == null) ? '-' : $absen->keterangan }}</td>
                     </tr>
                 @endif
             @endforeach

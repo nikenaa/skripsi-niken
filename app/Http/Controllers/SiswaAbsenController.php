@@ -138,7 +138,7 @@ class SiswaAbsenController extends Controller
     public function absen_masuk(Request $request)
     {
         $absensi = Absensi::firstWhere('kode', $request->content);
-        if ($absensi === null) {
+        if ($absensi == null) {
             return 'error';
         } else {
             $waktu_sekarang = date('Y-m-d H:i:s', time());
@@ -164,7 +164,7 @@ class SiswaAbsenController extends Controller
     public function absen_keluar(Request $request)
     {
         $absensi = Absensi::firstWhere('kode', $request->content);
-        if ($absensi === null) {
+        if ($absensi == null) {
             return 'error';
         } else {
             $waktu_sekarang = date('Y-m-d H:i:s', time());

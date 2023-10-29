@@ -42,7 +42,7 @@
                                                 <a href="{{ url('/siswa/suket/' . $absensi_karyawan->suket) }}" class="btn btn-success">Unduh</a>
                                             </td>
                                             <td align="center">
-                                                @if ($absensi_karyawan->izinkan === 0)
+                                                @if ($absensi_karyawan->izinkan == 0)
                                                     <a href="javascript:void(0);" class="badge badge-warning">Pending</a>
                                                 @else
                                                     <a href="javascript:void(0);" class="badge badge-success">Di izinkan</a>
@@ -54,7 +54,7 @@
                             </div>
                             <a href="{{ url('/siswa/absensi') }}" class="btn btn-danger">kembali</a>
                         @else
-                            @if ($absensi_karyawan->absen_masuk === null)
+                            @if ($absensi_karyawan->absen_masuk == null)
                                 <div class="waktu">
                                     <form action="{{ url('/siswa/izin/' . $absensi->kode) }}" method="POST" class="form" enctype="multipart/form-data">
                                         @csrf
@@ -96,7 +96,7 @@
 
 <script>
 
-    @if ($absensi_karyawan->absen_masuk === null)
+    @if ($absensi_karyawan->absen_masuk == null)
     var link = "{{ url('siswa/absensi') }}";
         var countDownDate=new Date("{{ $absensi->tgl }} {{ $absensi->jam_keluar }}").getTime(),x=setInterval(function(){var a=(new Date).getTime(),a=countDownDate-a;Math.floor(a/864e5),Math.floor(a%864e5/36e5),Math.floor(a%36e5/6e4),Math.floor(a%6e4/1e3);a<0&&(clearInterval(x),$(".waktu").html('<div class="alert alert-danger">Absensi telah berakhir, Anda tidak dapat mengirimkan permohonan izin</div><a href="'+ link +'" class="btn btn-danger">kembali</a>'))},500);
     @endif

@@ -52,7 +52,7 @@
                                                 </td>
                                                 <td align="center">{{ $karyawan->jenis_kelamin }}</td>
                                                 <td align="center">
-                                                    @if ($karyawan->is_active === 1)
+                                                    @if ($karyawan->is_active == 1)
                                                         <span class="badge badge-pill badge-primary">Yes</span>
                                                     @else
                                                         <span class="badge badge-pill badge-danger">No</span>

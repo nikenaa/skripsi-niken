@@ -6,28 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ asset('assets/rb.png') }}">
 
-    <!-- ===== BOX ICONS ===== -->
+    <!-- ==== BOX ICONS ==== -->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-    <!-- ===== SWAL JS ===== -->
+    <!-- ==== SWAL JS ==== -->
     <script src="{{ asset('assets/template/presensi-abdul/plugins/swal/sweetalert2.all.js') }}"></script>
 
     <title>{{ $judul }}</title>
 
-    <!--===== MAIN CSS =====-->
+    <!--==== MAIN CSS ====-->
     <style>
-        /*===== GOOGLE FONTS =====*/
+        /*==== GOOGLE FONTS ====*/
         @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
 
-        /*===== VARIABLES CSS =====*/
+        /*==== VARIABLES CSS ====*/
         :root {
-            /*===== Colores =====*/
+            /*==== Colores ====*/
             --first-color: darkblue;
             --first-color-dark: #23004D;
             --first-color-light: #A49EAC;
             --first-color-lighten: #F2F2F2;
 
-            /*===== Font and typography =====*/
+            /*==== Font and typography ====*/
             --body-font: 'Open Sans', sans-serif;
             --h1-font-size: 1.5rem;
             --normal-font-size: .938rem;
@@ -41,7 +41,7 @@
             }
         }
 
-        /*===== BASE =====*/
+        /*==== BASE ====*/
         *,
         ::before,
         ::after {
@@ -70,7 +70,7 @@
             display: block;
         }
 
-        /*===== LOGIN =====*/
+        /*==== LOGIN ====*/
         .login {
             display: grid;
             grid-template-columns: 100%;
@@ -232,7 +232,7 @@
             display: none;
         }
 
-        /* ===== MEDIA QUERIES =====*/
+        /* ==== MEDIA QUERIES ====*/
         @media screen and (min-width: 576px) {
             .login__forms {
                 width: 348px;
@@ -306,7 +306,7 @@
                         <input type="password" name="password" placeholder="Password" class="login__input" autocomplete="off" required>
                     </div>
                     <button type="submit" class="login__button">Sign In</button>
-                    @if ($admin === null)
+                    @if ($admin == null)
                         <div>
                             <span class="login__account">Akun Admin Belum Terdaftar.</span>
                             <span class="login__signin" id="sign-up">Sign Up</span>
@@ -342,7 +342,7 @@
         </div>
     </div>
 
-    <!--===== MAIN JS =====-->
+    <!--==== MAIN JS ====-->
     <script>
         const signUp=document.getElementById("sign-up"),signIn=document.getElementById("sign-in"),loginIn=document.getElementById("login-in"),loginUp=document.getElementById("login-up");signUp.addEventListener("click",()=>{loginIn.classList.remove("block"),loginUp.classList.remove("none"),loginIn.classList.toggle("none"),loginUp.classList.toggle("block")}),signIn.addEventListener("click",()=>{loginIn.classList.remove("none"),loginUp.classList.remove("block"),loginIn.classList.toggle("block"),loginUp.classList.toggle("none")});
     </script>

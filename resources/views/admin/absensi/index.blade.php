@@ -48,7 +48,7 @@
                                                     <td align="center">{{ $absensi->tgl }}</td>
                                                     <td align="center">{{ $absensi->jam_masuk }} - {{ $absensi->jam_keluar }}</td>
                                                     <td align="center">
-                                                        {{ ($absensi->project_id === 0) ? 'Semua Project' : $absensi->project->nama }}
+                                                        {{ ($absensi->project_id == 0) ? 'Semua Project' : $absensi->project->nama }}
                                                     </td>
                                                     <td align="center">
 

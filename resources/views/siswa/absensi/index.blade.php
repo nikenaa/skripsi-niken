@@ -42,7 +42,7 @@
                                             <td align="center">{{ $presensi->nama }}</td>
                                             <td align="center">{{ $presensi->tgl }}</td>
                                             <td align="center">{{ $presensi->jam_masuk }} - {{ $presensi->jam_keluar }}</td>
-                                            <td align="center">{{ ($presensi->project_id === 0) ? 'Semua Project' : $presensi->project->nama }}</td>
+                                            <td align="center">{{ ($presensi->project_id == 0) ? 'Semua Project' : $presensi->project->nama }}</td>
                                             <td align="center">
                                                 <div class="btn-group">
                                                     <a href="{{ url('siswa/absensi/' . $presensi->kode) }}" class="btn btn-primary">Masuk</a>
@@ -57,7 +57,7 @@
                                                 <td align="center">{{ $presensi->nama }}</td>
                                                 <td align="center">{{ $presensi->tgl }}</td>
                                                 <td align="center">{{ $presensi->jam_masuk }} - {{ $presensi->jam_keluar }}</td>
-                                                <td align="center">{{ ($presensi->project_id === 0) ? 'Semua Project' : $presensi->project->nama }}</td>
+                                                <td align="center">{{ ($presensi->project_id == 0) ? 'Semua Project' : $presensi->project->nama }}</td>
                                                 <td align="center">
                                                     <div class="btn-group">
                                                         <a href="{{ url('siswa/absensi/' . $presensi->kode) }}" class="btn btn-primary">Masuk</a>
