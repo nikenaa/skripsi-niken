@@ -33,9 +33,9 @@
             <div class="col-lg-12">
                 <div class="card absen-container">
                     <div id="result"></div>
-                    @if ($absensi_siswa->izinkan === null)
+                    @if ($absensi_karyawan->izinkan === null)
 
-                        @if ($absensi_siswa->absen_masuk === null)
+                        @if ($absensi_karyawan->absen_masuk === null)
                         
                             <div class="card-body card-body-scan">
                                 <h4 class="card-title font-16 mt-0">Scan Here!</h4>
@@ -55,9 +55,9 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>jam {{ Str::substr($absensi_siswa->absen_masuk, 11, 5) }}</td>
+                                                <td>jam {{ Str::substr($absensi_karyawan->absen_masuk, 11, 5) }}</td>
                                                 <td>
-                                                    {!! ($absensi_siswa->telat === 1) ? '<span class="badge badge-danger">Terlambat</span>' : '<span class="badge badge-primary">Sukses</span>' !!}
+                                                    {!! ($absensi_karyawan->telat === 1) ? '<span class="badge badge-danger">Terlambat</span>' : '<span class="badge badge-primary">Sukses</span>' !!}
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -79,7 +79,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if ($absensi_siswa->izinkan === 0)
+                                        @if ($absensi_karyawan->izinkan === 0)
                                             <tr align="center">
                                                 <td>Izin</td>
                                                 <td>
@@ -87,7 +87,7 @@
                                                 </td>
                                             </tr>
                                         @endif
-                                        @if ($absensi_siswa->izinkan === 1)
+                                        @if ($absensi_karyawan->izinkan === 1)
                                             <tr align="center">
                                                 <td>Izin</td>
                                                 <td>
@@ -111,8 +111,8 @@
 
 
 <script>
-    @if ($absensi_siswa->izinkan === null)
-        @if ($absensi_siswa->absen_masuk === null)
+    @if ($absensi_karyawan->izinkan === null)
+        @if ($absensi_karyawan->absen_masuk === null)
             var countDownDate=new Date("{{ $absensi->tgl }} {{ $absensi->jam_keluar }}").getTime(),x=setInterval(function(){$("#html5-qrcode-anchor-scan-type-change").css("display","none");var e=(new Date).getTime(),e=countDownDate-e;Math.floor(e/864e5),Math.floor(e%864e5/36e5),Math.floor(e%36e5/6e4),Math.floor(e%6e4/1e3);e<0&&(clearInterval(x),$(".absen-container").html('<div class="card-body"><div class="alert alert-danger">Absen Telah Berakhir!</div></div>'))},500);
             var lastResult,countResults=0;function onScanSuccess(e,t){e!==lastResult&&(++countResults,lastResult=e,$.ajax({headers:{"X-CSRF-TOKEN":"{{ csrf_token() }}"},type:"POST",data:{content:e,_token:"{{ csrf_token() }}"},url:"{{ url('/siswa/absen_masuk') }}",async:!0,success:function(e){"error"==e&&Swal.fire({title:"Error",text:"Qr Code Tidak Terdeteksi",icon:"error",showCancelButton:!1,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"OK"}),"success"==e&&(Swal.fire({title:"Berhasil",text:"Anda sudah mengisi presensi",icon:"success",showCancelButton:!1,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"OK"}).then(e=>{e.isConfirmed&&location.reload()}),scanner.stop())}}))}var html5QrcodeScanner=new Html5QrcodeScanner("qr-reader",{fps:10,qrbox:250});html5QrcodeScanner.render(onScanSuccess);
         @endif

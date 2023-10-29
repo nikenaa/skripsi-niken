@@ -30,10 +30,10 @@ Route::resource('/admin', AdminController::class)->middleware('is_admin');
 Route::post('/password_admin/{admin:id}', [AdminController::class, 'password']);
 
 Route::get('/data_karyawan', [AdminSiswaController::class, 'data_karyawan'])->middleware('is_admin');
-Route::resource('/admin/siswa', AdminSiswaController::class)->middleware('is_admin');
+Route::resource('/admin/karyawan', AdminSiswaController::class)->middleware('is_admin');
 
 Route::get('/data_project', [AdminKelasController::class, 'index'])->middleware('is_admin');
-Route::resource('/admin/kelas', AdminKelasController::class)->middleware('is_admin');
+Route::resource('/admin/project', AdminKelasController::class)->middleware('is_admin');
 
 Route::get('/data_absensi', [AdminAbsenController::class, 'index'])->middleware('is_admin');
 Route::resource('/admin/absensi', AdminAbsenController::class)->middleware('is_admin');

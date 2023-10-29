@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title font-16 mt-0"></h4>
-                        <img src="{{ asset('assets/user/' . $siswa->foto) }}" alt="E-Presensi Abduloh" class="img-thumbnail" style="width: 100%">
+                        <img src="{{ asset('assets/user/' . $karyawan->foto) }}" alt="E-Presensi Abduloh" class="img-thumbnail" style="width: 100%">
                     </div>
                 </div>
             </div>
@@ -39,26 +39,26 @@
                                 <div class="col-md">
                                     <div class="form-group">
                                         <label for="">No Induk</label>
-                                        <input type="text" name="no_induk" value="{{ $siswa->no_induk }}" class="form-control" readonly>
+                                        <input type="text" name="no_induk" value="{{ $karyawan->no_induk }}" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md">
                                     <div class="form-group">
                                         <label for="">Nama</label>
-                                        <input type="text" name="nama" value="{{ $siswa->nama }}" class="form-control">
+                                        <input type="text" name="nama" value="{{ $karyawan->nama }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md">
                                     <div class="form-group">
                                         <label for="">Project</label>
-                                        <input type="text" name="project_id" value="{{ $siswa->project->nama }}" class="form-control" readonly>
+                                        <input type="text" name="project_id" value="{{ $karyawan->project->nama }}" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md">
                                     <div class="form-group">
                                         <label for="">Gender</label>
                                         <select name="jenis_kelamin" class="form-control">
-                                            <?php if ($siswa->jenis_kelamin == 'P') : ?>
+                                            <?php if ($karyawan->jenis_kelamin == 'P') : ?>
                                                 <option value="L">Laki- Laki</option>
                                                 <option value="P" selected>Perempuan</option>
                                             <?php else : ?>
@@ -73,20 +73,20 @@
                                 <div class="col-md">
                                     <div class="form-group">
                                         <label for="">Tanggal Lahir</label>
-                                        <input type="date" name="tgl_lahir" value="{{ $siswa->tgl_lahir }}" class="form-control">
+                                        <input type="date" name="tgl_lahir" value="{{ $karyawan->tgl_lahir }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md">
                                     <div class="form-group">
                                         <label for="">Tempat Lahir</label>
-                                        <input type="text" name="tempat_lahir" value="{{ $siswa->tempat_lahir }}" class="form-control">
+                                        <input type="text" name="tempat_lahir" value="{{ $karyawan->tempat_lahir }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md">
                                     <div class="form-group">
                                         <label for="">Foto</label>
                                         <input type="file" name="foto">
-                                        <input type="hidden" name="foto_lama" value="{{ $siswa->foto }}">
+                                        <input type="hidden" name="foto_lama" value="{{ $karyawan->foto }}">
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title font-16 mt-0">Update Password</h4>
-                        <form action="{{ url('/siswa/password/' . $siswa->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('/siswa/password/' . $karyawan->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="">Current Password</label>

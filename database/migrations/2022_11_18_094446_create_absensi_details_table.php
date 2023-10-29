@@ -16,7 +16,7 @@ class CreateAbsensiDetailsTable extends Migration
         Schema::create('absensi_detail', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
-            $table->integer('siswa_id');
+            $table->integer('karyawan_id');
             $table->string('absen_masuk')->nullable();
             $table->boolean('telat')->nullable();
             $table->string('absen_keluar')->nullable();

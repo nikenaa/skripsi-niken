@@ -24,7 +24,7 @@
                 <div class="card m-b-30">
                     <div class="card-body">
                         <h4 class="card-title font-16 mt-0">Project List</h4>
-                        <a href="{{ url('/admin/kelas/create') }}" class="btn btn-outline-primary m-b-10">Tambah Project</a>
+                        <a href="{{ url('/admin/project/create') }}" class="btn btn-outline-primary m-b-10">Tambah Project</a>
                         @if ($data_project->count() > 0)
                             <div class="table-responsive">
                                 <table id="datatable" class="table table-bordered nowrap" style="width: 100%;">
@@ -42,7 +42,7 @@
                                                 <td align="center">{{ $project->nama; }}</td>
                                                 <td align="center">
                                                     <a href="javascript:void(0);" class="btn btn-success btn-edit-class" data-toggle="modal" data-id="{{ $project->id }}" data-nama="{{ $project->nama }}" data-target="#modaleditclass"><i class="mdi mdi-cogs"></i></a>
-                                                    <form action="{{ url('/admin/kelas/' . $project->id) }}" method="post" style="display: inline">
+                                                    <form action="{{ url('/admin/project/' . $project->id) }}" method="post" style="display: inline">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-hapus"><i class="mdi mdi-trash-can-outline"></i></button>
@@ -95,7 +95,7 @@
 <!-- MODAL EDIT -->
 
 <script>
-    $(".btn-edit-class").click(function(){var a=$(this).data("id"),t=$(this).data("nama"),a="{{ url('/admin/kelas') }}/"+a;$("input[name=nama]").val(t),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
+    $(".btn-edit-class").click(function(){var a=$(this).data("id"),t=$(this).data("nama"),a="{{ url('/admin/project') }}/"+a;$("input[name=nama]").val(t),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
 </script>
     {!! session('pesan') !!}
 

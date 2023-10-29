@@ -18,7 +18,7 @@ class SiswaController extends Controller
             'plugin_js' => '
                 
             ',
-            'siswa' => Karyawan::firstWhere('id', session('id'))
+            'karyawan' => Karyawan::firstWhere('id', session('id'))
         ]);
     }
     public function profile()
@@ -31,7 +31,7 @@ class SiswaController extends Controller
             'plugin_js' => '
                 
             ',
-            'siswa' => Karyawan::firstWhere('id', session('id')),
+            'karyawan' => Karyawan::firstWhere('id', session('id')),
         ]);
     }
     public function edit(Request $request)
@@ -65,9 +65,9 @@ class SiswaController extends Controller
             </script>
         ');
     }
-    public function password(Request $request, Karyawan $siswa)
+    public function password(Request $request, Karyawan $karyawan)
     {
-        if ($request->password != $siswa->password) {
+        if ($request->password != $karyawan->password) {
             return redirect('siswa_profile')->with('pesan', '
                 <script>
                     Swal.fire(
@@ -79,7 +79,7 @@ class SiswaController extends Controller
             ');
         }
 
-        Karyawan::where('id', $siswa->id)
+        Karyawan::where('id', $karyawan->id)
             ->update(['password' => $request->password2]);
 
         return redirect('siswa_profile')->with('pesan', '

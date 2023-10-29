@@ -37,7 +37,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($presensi_list->sortBy('id') as $presensi)
-                                    @if ($presensi->project_id == $siswa->project_id)
+                                    @if ($presensi->project_id == $karyawan->project_id)
                                         <tr>
                                             <td align="center">{{ $presensi->nama }}</td>
                                             <td align="center">{{ $presensi->tgl }}</td>

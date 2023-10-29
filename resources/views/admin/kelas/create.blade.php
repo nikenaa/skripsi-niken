@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <h3 class="card-title font-16 mt-0">Form Tambah Project</h3>
                         <button type="button" class="btn btn-outline-primary mt-2 mb-3 tambah-baris-kelas">Tambah Baris</button>
-                        <form action="{{ url('/admin/kelas') }}" method="POST">
+                        <form action="{{ url('/admin/project') }}" method="POST">
                             @csrf
                             <input type="hidden" name="additional" value="additional">
                             <div class="table-responsive">

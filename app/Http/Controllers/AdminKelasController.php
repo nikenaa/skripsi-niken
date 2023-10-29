@@ -106,10 +106,9 @@ class AdminKelasController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $kela)
+    public function update(Request $request, Project $project)
     {
-        // dd($kela);
-        Project::where('id', $kela->id)
+        Project::where('id', $project->id)
             ->update(['nama' => $request->nama]);
 
         return redirect('/data_project')->with('pesan', '
@@ -129,9 +128,9 @@ class AdminKelasController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $kela)
+    public function destroy(Project $project)
     {
-        Project::destroy($kela->id);
+        Project::destroy($project->id);
 
         return redirect('/data_project')->with('pesan', '
             <script>

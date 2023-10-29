@@ -26,7 +26,7 @@
                     <div class="card m-b-30">
                         <div class="card-body">
                             <h3 class="card-title font-16 mt-0">Karyawan Data List</h3>
-                            <a href="{{ url('/admin/siswa/create') }}" class="btn btn-outline-primary m-b-10">Tambah data Karyawan</a>
+                            <a href="{{ url('/admin/karyawan/create') }}" class="btn btn-outline-primary m-b-10">Tambah data Karyawan</a>
                             @if ($data_karyawan->count() > 0)
                                 <table id="datatable" class="table table-bordered text-nowrap" style="width: 100%;">
                                     <thead>
@@ -42,29 +42,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data_karyawan as $siswa)
+                                        @foreach ($data_karyawan as $karyawan)
                                             <tr>
                                                 <td align="center">{{ $loop->iteration }}</td>
-                                                <td align="center">{{ $siswa->no_induk }}</td>
-                                                <td align="center">{{ $siswa->nama }}</td>
+                                                <td align="center">{{ $karyawan->no_induk }}</td>
+                                                <td align="center">{{ $karyawan->nama }}</td>
                                                 <td align="center">
-                                                    {{ $siswa->project->nama }}
+                                                    {{ $karyawan->project->nama }}
                                                 </td>
-                                                <td align="center">{{ $siswa->jenis_kelamin }}</td>
+                                                <td align="center">{{ $karyawan->jenis_kelamin }}</td>
                                                 <td align="center">
-                                                    @if ($siswa->is_active === 1)
+                                                    @if ($karyawan->is_active === 1)
                                                         <span class="badge badge-pill badge-primary">Yes</span>
                                                     @else
                                                         <span class="badge badge-pill badge-danger">No</span>
                                                     @endif
                                                 </td>
                                                 <td align="center">
-                                                    <img src="{{ asset('assets/user/' . $siswa->foto) }}" alt="" class="rounded-circle thumb-sm">
+                                                    <img src="{{ asset('assets/user/' . $karyawan->foto) }}" alt="" class="rounded-circle thumb-sm">
                                                 </td>
                                                 <td align="center">
-                                                    <a href="javascript:void(0);" class="btn btn-success btn-edit-siswa" data-toggle="modal" data-no_induk="{{ $siswa->no_induk }}" data-id="{{ $siswa->id }}" data-nama="{{ $siswa->nama }}" data-project_id="{{ $siswa->project_id }}" data-is_active="{{ $siswa->is_active }}" data-target="#modaleditsiswa"><i class="mdi mdi-cogs"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-success btn-edit-siswa" data-toggle="modal" data-no_induk="{{ $karyawan->no_induk }}" data-id="{{ $karyawan->id }}" data-nama="{{ $karyawan->nama }}" data-project_id="{{ $karyawan->project_id }}" data-is_active="{{ $karyawan->is_active }}" data-target="#modaleditsiswa"><i class="mdi mdi-cogs"></i></a>
                                                     
-                                                    <form action="{{ url('/admin/siswa/' . $siswa->id) }}" method="post" style="display: inline">
+                                                    <form action="{{ url('/admin/karyawan/' . $karyawan->id) }}" method="post" style="display: inline">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger btn-hapus"><i class="mdi mdi-trash-can-outline"></i></button>
@@ -145,7 +145,7 @@
     <!-- MODAL EDIT -->
 
     <script>
-        $(".btn-edit-siswa").click(function(){var a=$(this).data("id"),t=$(this).data("no_induk"),i=$(this).data("nama"),n=$(this).data("project_id"),e=$(this).data("is_active"),a="{{ url('/admin/siswa') }}/"+a;$("input[name=nama]").val(i),$("input[name=no_induk]").val(t),$("select[name=project_id]").val(n),$("select[name=is_active]").val(e),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
+        $(".btn-edit-siswa").click(function(){var a=$(this).data("id"),t=$(this).data("no_induk"),i=$(this).data("nama"),n=$(this).data("project_id"),e=$(this).data("is_active"),a="{{ url('/admin/karyawan') }}/"+a;$("input[name=nama]").val(i),$("input[name=no_induk]").val(t),$("select[name=project_id]").val(n),$("select[name=is_active]").val(e),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
     </script>
     {!! session('pesan') !!}
 

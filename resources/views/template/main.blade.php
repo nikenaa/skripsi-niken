@@ -46,7 +46,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        © 2022 E-Presensi QR Laravel 8 <span class="d-none d-sm-inline-block"> - built with <i class="mdi mdi-laravel text-danger" style="font-size: 18px"></i> by <a href="https://www.youtube.com/channel/UCvteoPo7Th3Q2Mdi9c8CT1w" target="_blank">Abdul Malela</a></span>
+        © 2022 E-Presensi QR Laravel 8 <span class="d-none d-sm-inline-block"></span>
     </footer>
 
     <!-- End Footer -->
