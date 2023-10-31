@@ -4,11 +4,11 @@
             <a href="javascript:void(0);" class="friends-suggestions-list">
                 <div class="position-relative shadow rounded mt-2">
                     <div class="float-left mb-2 mr-2 ml-2">
-                        <img src="{{ asset('assets/user/' . $absen->siswa->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
+                        <img src="{{ asset('assets/user/' . $absen->karyawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
                     </div>
                     <div class="desc">
-                        <h5 class="font-14 mb-1 text-dark pt-2">{{ $absen->siswa->nama }}</h5>
-                        <small>Project : {{ $absen->siswa->project->nama }}</small><br>
+                        <h5 class="font-14 mb-1 text-dark pt-2">{{ $absen->karyawan->nama }}</h5>
+                        <small>Project : {{ $absen->karyawan->project->nama }}</small><br>
                         @if ($absen->telat == 1)
                             <span class="badge badge-danger mb-2">Terlambat</span>
                         @endif
@@ -25,11 +25,11 @@
             <a href="javascript:void(0);" class="friends-suggestions-list">
                 <div class="position-relative shadow rounded mt-2">
                     <div class="float-left mb-2 mr-2 ml-2">
-                        <img src="{{ asset('assets/user/' . $i->siswa->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
+                        <img src="{{ asset('assets/user/' . $i->karyawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
                     </div>
                     <div class="desc">
-                        <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->siswa->nama }}</h5>
-                        <small>Project : {{ $i->siswa->project->nama }}</small><br>
+                        <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->karyawan->nama }}</h5>
+                        <small>Project : {{ $i->karyawan->project->nama }}</small><br>
                         @if ($i->izinkan == 1)
                             <span class="badge badge-primary mb-2">Izin</span>
                         @endif

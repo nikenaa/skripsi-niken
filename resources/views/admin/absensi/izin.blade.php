@@ -45,9 +45,9 @@
                                             @foreach ($list_izin as $izin)
                                                 <tr align="center">
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $izin->siswa->nama }}</td>
-                                                    <td>{{ $izin->siswa->no_induk }}</td>
-                                                    <td>{{ $izin->siswa->project->nama }}</td>
+                                                    <td>{{ $izin->karyawan->nama }}</td>
+                                                    <td>{{ $izin->karyawan->no_induk }}</td>
+                                                    <td>{{ $izin->karyawan->project->nama }}</td>
                                                     <td>{{ $izin->keterangan }}</td>
                                                     <td>
                                                         <a href="{{ url('/suket_izin/' . $izin->suket) }}" class="btn btn-success">Unduh</a>

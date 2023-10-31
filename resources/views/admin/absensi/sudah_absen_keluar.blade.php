@@ -4,11 +4,11 @@
             <a href="javascript:void(0);" class="friends-suggestions-list">
                 <div class="position-relative shadow rounded mt-2">
                     <div class="float-left mb-2 mr-2 ml-2 mt-1">
-                        <img src="{{ asset('assets/user/' . $absen->siswa->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
+                        <img src="{{ asset('assets/user/' . $absen->kakryawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
                     </div>
                     <div class="desc">
-                        <h5 class="font-14 mb-1 text-dark pt-3">{{ $absen->siswa->nama }}</h5>
-                        <small>Project : {{ $absen->siswa->project->nama }}</small><br><br>
+                        <h5 class="font-14 mb-1 text-dark pt-3">{{ $absen->kakryawan->nama }}</h5>
+                        <small>Project : {{ $absen->kakryawan->project->nama }}</small><br><br>
                     </div>
                 </div>
             </a>
@@ -19,11 +19,11 @@
             <a href="javascript:void(0);" class="friends-suggestions-list">
                 <div class="position-relative shadow rounded mt-2">
                     <div class="float-left mb-2 mr-2 ml-2 mt-1">
-                        <img src="{{ asset('assets/user/' . $i->siswa->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
+                        <img src="{{ asset('assets/user/' . $i->kakryawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
                     </div>
                     <div class="desc">
-                        <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->siswa->nama }}</h5>
-                        <small>Project : {{ $i->siswa->project->nama }}</small><br>
+                        <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->kakryawan->nama }}</h5>
+                        <small>Project : {{ $i->kakryawan->project->nama }}</small><br>
                         @if ($i->izinkan == 1)
                             <span class="badge badge-primary mb-2">Izin</span>
                         @endif

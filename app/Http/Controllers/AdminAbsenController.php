@@ -262,7 +262,6 @@ class AdminAbsenController extends Controller
         $izin = AbsensiDetail::where('kode', $absensi->kode)
             ->whereNotNull('izinkan')
             ->get();
-
         return view('admin.absensi.izin', [
             'judul' => 'Presensi QR | Izin Absensi',
             'plugin_css' => '

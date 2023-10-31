@@ -10,10 +10,10 @@ class AbsensiDetail extends Model
     use HasFactory;
     public $table = 'absensi_detail';
     protected $guarded = ['id'];
-    public $with = ['siswa'];
+    public $with = ['karyawan'];
 
     // Relasikan ke Karyawan
-    public function siswa()
+    public function karyawan()
     {
         return $this->belongsTo(Karyawan::class);
     }

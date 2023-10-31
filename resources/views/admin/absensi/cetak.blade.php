@@ -47,7 +47,7 @@
     </center>
     <hr>
     
-    @if ($absensi_siswa->count() > 0)
+    @if ($absensi_karyawan->count() > 0)
         <h4 class="mt-4" style="text-align: center;">List Sudah Presensi</h4>
         <table class="table text-center" width="100%">
             <tr>
@@ -59,12 +59,12 @@
                 <th>ABSEN PULANG</th>
                 <th>KET</th>
             </tr>
-            @foreach ($absensi_siswa as $absen)
+            @foreach ($absensi_karyawan as $absen)
                 @if ($absen->absen_masuk !== null || $absen->izinkan !== null)
                     <tr>
-                        <td>{{ $absen->siswa->nama }}</td>
-                        <td>{{ $absen->siswa->no_induk }}</td>
-                        <td>{{ $absen->siswa->project->nama }}</td>
+                        <td>{{ $absen->karyawan->nama }}</td>
+                        <td>{{ $absen->karyawan->no_induk }}</td>
+                        <td>{{ $absen->karyawan->project->nama }}</td>
                         <td>{{ ($absen->absen_masuk == null) ? '-' : Str::substr($absen->absen_masuk, 11, 5) }}</td>
                         <td>
                             @if ($absen->telat == 0) sukses @endif
@@ -95,9 +95,9 @@
             </tr>
             @foreach ($belum_absen as $absen)
                 <tr>
-                    <td>{{ $absen->siswa->nama }}</td>
-                    <td>{{ $absen->siswa->no_induk }}</td>
-                    <td>{{ $absen->siswa->project->nama }}</td>
+                    <td>{{ $absen->karyawan->nama }}</td>
+                    <td>{{ $absen->karyawan->no_induk }}</td>
+                    <td>{{ $absen->karyawan->project->nama }}</td>
                 </tr>
             @endforeach
         </table>
