@@ -59,7 +59,7 @@
                                                     @endif
                                                 </td>
                                                 <td align="center">
-                                                    <img src="{{ asset('assets/user/' . $karyawan->foto) }}" alt="" class="rounded-circle thumb-sm">
+                                                    <img src="{{ asset('public/assets/user/' . $karyawan->foto) }}" alt="" class="rounded-circle thumb-sm">
                                                 </td>
                                                 <td align="center">
                                                     <a href="javascript:void(0);" class="btn btn-success btn-edit-siswa" data-toggle="modal" data-no_induk="{{ $karyawan->no_induk }}" data-id="{{ $karyawan->id }}" data-nama="{{ $karyawan->nama }}" data-project_id="{{ $karyawan->project_id }}" data-is_active="{{ $karyawan->is_active }}" data-target="#modaleditsiswa"><i class="mdi mdi-cogs"></i></a>

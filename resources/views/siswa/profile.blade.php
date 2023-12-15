@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title font-16 mt-0"></h4>
-                        <img src="{{ asset('assets/user/' . $karyawan->foto) }}" alt="E-Presensi Abduloh" class="img-thumbnail" style="width: 100%">
+                        <img src="{{ asset('public/assets/user/' . $karyawan->foto) }}" alt="E-Presensi Abduloh" class="img-thumbnail" style="width: 100%">
                     </div>
                 </div>
             </div>

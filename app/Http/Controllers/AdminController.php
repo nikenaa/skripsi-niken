@@ -166,10 +166,10 @@ class AdminController extends Controller
             if ($request->file('foto')) {
                 if ($request->file) {
                     if ($request->foto_lama != 'default.jpg') {
-                        Storage::delete('assets/user/' . $request->foto_lama);
+                        Storage::delete('public/assets/user/' . $request->foto_lama);
                     }
                 }
-                $data['foto'] = str_replace('assets/user/', '', $request->file('foto')->store('assets/user'));
+                $data['foto'] = str_replace('public/assets/user/', '', $request->file('foto')->store('assets/user'));
             }
             $data['nama'] = $request->nama;
             $redirect = '/admin/' . $admin->id;

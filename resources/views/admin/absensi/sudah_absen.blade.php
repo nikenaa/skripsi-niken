@@ -4,7 +4,7 @@
             <a href="javascript:void(0);" class="friends-suggestions-list">
                 <div class="position-relative shadow rounded mt-2">
                     <div class="float-left mb-2 mr-2 ml-2">
-                        <img src="{{ asset('assets/user/' . $absen->karyawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
+                        <img src="{{ asset('public/assets/user/' . $absen->karyawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
                     </div>
                     <div class="desc">
                         <h5 class="font-14 mb-1 text-dark pt-2">{{ $absen->karyawan->nama }}</h5>
@@ -25,7 +25,7 @@
             <a href="javascript:void(0);" class="friends-suggestions-list">
                 <div class="position-relative shadow rounded mt-2">
                     <div class="float-left mb-2 mr-2 ml-2">
-                        <img src="{{ asset('assets/user/' . $i->karyawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
+                        <img src="{{ asset('public/assets/user/' . $i->karyawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
                     </div>
                     <div class="desc">
                         <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->karyawan->nama }}</h5>

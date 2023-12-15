@@ -46,10 +46,10 @@ class SiswaController extends Controller
         if ($request->file('foto')) {
             if ($request->foto_lama) {
                 if ($request->foto_lama != 'default.jpg') {
-                    Storage::delete('assets/user/' . $request->foto_lama);
+                    Storage::delete('public/assets/user/' . $request->foto_lama);
                 }
             }
-            $data['foto'] = str_replace('assets/user/', '', $request->file('foto')->store('assets/user'));
+            $data['foto'] = str_replace('public/assets/user/', '', $request->file('foto')->store('assets/user'));
         }
 
         Karyawan::where('id', session('id'))

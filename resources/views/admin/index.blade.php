@@ -55,7 +55,7 @@
                                                 @endif
                                             </td>
                                             <td align="center">
-                                                <img src="{{ asset('assets/user/' . $dm->foto) }}" alt="" class="rounded-circle thumb-sm">
+                                                <img src="{{ asset('public/assets/user/' . $dm->foto) }}" alt="" class="rounded-circle thumb-sm">
                                             </td>
                                             <td align="center">
                                                 @if ($dm->id == session('id'))
