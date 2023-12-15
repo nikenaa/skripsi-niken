@@ -135,7 +135,6 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
     }
 
     /**
@@ -147,20 +146,25 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        if ($request->edit == 'admins') {
+        if ($request->edit == 'admin') {
             $data = [
                 'nama' => $request->nama,
                 'username' => $request->username,
-                'password' => $request->password,
                 'is_active' => $request->is_active,
             ];
+
+            if ($request->password) {
+                $data['password'] = $request->password;
+            }
+
             $redirect = '/admin';
         }
+        
 
         if ($request->edit == 'admin') {
             // cek apakah ada gambar yang di upload
             if ($request->file('foto')) {
-                if ($request->foto_lama) {
+                if ($request->file) {
                     if ($request->foto_lama != 'default.jpg') {
                         Storage::delete('assets/user/' . $request->foto_lama);
                     }

@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title font-16 mt-0"></h4>
-                            <img src="{{ asset('assets/user/' . $admin->foto) }}" alt="E-Presensi Abduloh" class="img-thumbnail" style="width: 100%;">
+                            <img src="{{ asset('public/assets/user/' . $admin->foto) }}" alt="E-Presensi Abduloh" class="img-thumbnail" style="width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -36,9 +36,15 @@
                                 @csrf
                                 @method('PUT')
                                 @csrf
+                                <input type="hidden" name="edit" value="admin" required>
+                                <input type="hidden" class="form-control" name="is_active" value="{{ $admin->is_active }}" required>
+
+                                <div class="form-group">
+                                    <label for="">Username</label>
+                                    <input type="text" class="form-control" name="username" value="{{ $admin->username }}" required>
+                                </div>
                                 <div class="form-group">
                                     <label for="">Nama</label>
-                                    <input type="hidden" name="edit" value="admin" required>
                                     <input type="text" class="form-control" name="nama" value="{{ $admin->nama }}" required>
                                 </div>
                                 <div class="form-group">

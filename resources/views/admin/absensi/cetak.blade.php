@@ -26,8 +26,8 @@
     </style>
 </head>
 <body>
-    <h2 style="text-align: center;">E-PRESENSI BY ABDULOH<br><small>Built With Laravel 8 & PHP 8</small></h2>
-    <p style="text-align: center;">jln. Samping Toko Bunga Ino RT 70 RW 50 Konoha Barat</p>
+    <h2 style="text-align: center;">PT DCITS<br><small>Digital China Information Service Company Ltd.</small></h2>
+    <p style="text-align: center;">Palma One Floor.6, 605, H.R Rasuna Said Street RT/RW. 008/004, Kuningan Timur, Setiabudi, Jakarta Selatan, DKI Jakarta 12950</p>
     <hr>
     <center>
         <table width="100%" class="text-center">
