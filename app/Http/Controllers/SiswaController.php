@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
+use App\Models\Absensi;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,6 +12,7 @@ class SiswaController extends Controller
 {
     public function index()
     {
+        $absensi_all = Absensi::where('tgl', date('m'))->get();
         return view('siswa.index', [
             'judul' => 'Presensi QR | Dashboard Karyawan',
             'plugin_css' => '
@@ -18,7 +21,8 @@ class SiswaController extends Controller
             'plugin_js' => '
                 
             ',
-            'karyawan' => Karyawan::firstWhere('id', session('id'))
+            'karyawan' => Karyawan::firstWhere('id', session('id')),
+            'presensi_list' => $absensi_all,
         ]);
     }
     public function profile()
