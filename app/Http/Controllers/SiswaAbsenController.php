@@ -66,7 +66,6 @@ class SiswaAbsenController extends Controller
         $absensi_karyawan = AbsensiDetail::where('kode', $absensi->kode)
             ->where('karyawan_id', session('id'))
             ->toSql();
-        dd($absensi->kode);
         return view('siswa.absensi.show', [
             'judul' => 'Presensi QR | Absensi Masuk',
             'plugin_css' => '
