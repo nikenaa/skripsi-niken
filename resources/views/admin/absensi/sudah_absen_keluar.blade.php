@@ -4,26 +4,26 @@
             <a href="javascript:void(0);" class="friends-suggestions-list">
                 <div class="position-relative shadow rounded mt-2">
                     <div class="float-left mb-2 mr-2 ml-2 mt-1">
-                        <img src="{{ asset('public/assets/user/' . $absen->kakryawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
+                        <img src="{{ asset('public/assets/user/' . $absen->karyawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
                     </div>
                     <div class="desc">
-                        <h5 class="font-14 mb-1 text-dark pt-3">{{ $absen->kakryawan->nama }}</h5>
-                        <small>Project : {{ $absen->kakryawan->project->nama }}</small><br><br>
+                        <h5 class="font-14 mb-1 text-dark pt-3">{{ $absen->karyawan->nama }}</h5>
+                        <small>Project : {{ $absen->karyawan->project->nama }}</small><br><br>
                     </div>
                 </div>
             </a>
         </div>
     @endforeach
-    @foreach ($izin as $i)
+    @foreach ($izin as $key => $i)
         <div class="col-sm-3 ">
             <a href="javascript:void(0);" class="friends-suggestions-list">
                 <div class="position-relative shadow rounded mt-2">
                     <div class="float-left mb-2 mr-2 ml-2 mt-1">
-                        <img src="{{ asset('public/assets/user/' . $i->kakryawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
+                        <img src="{{ asset('public/assets/user/' . $i->karyawan->foto) }}" alt="" class="rounded-circle thumb-md mt-2">
                     </div>
                     <div class="desc">
-                        <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->kakryawan->nama }}</h5>
-                        <small>Project : {{ $i->kakryawan->project->nama }}</small><br>
+                        <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->karyawan->nama }}</h5>
+                        <small>Project : {{ $i->karyawan->project->nama }}</small><br>
                         @if ($i->izinkan == 1)
                             <span class="badge badge-primary mb-2">Izin</span>
                         @endif
