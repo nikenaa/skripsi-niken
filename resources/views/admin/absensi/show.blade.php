@@ -28,9 +28,7 @@
                 <div class="col-lg-8 offset-lg-2 text-center absen-container">
                     <h1>SCAN HERE!</h1>
                     <div class="mt-2">
-                        <center>
-                            <div id="qrEvent"></div>
-                        </center>
+                        <center><div id="qrEvent"></div></center>
                     </div>
                     <a href="{{ url('/admin/cetakqr/' . $absensi->kode) }}" target="_blank" class="btn btn-primary mt-2 ml-auto">Export QR</a>
                 </div>
