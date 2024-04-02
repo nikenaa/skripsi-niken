@@ -52,11 +52,11 @@
         <table class="table text-center" width="100%">
             <tr>
                 <th>NAMA KARYAWAN</th>
-                <th>NO INDUK</th>
+                <th>NIK</th>
                 <th>PROJECT</th>
-                <th>ABSEN MASUK</th>
+                <th>MASUK</th>
                 <th>STATUS</th>
-                <th>ABSEN PULANG</th>
+                <th>PULANG</th>
                 <th>KET</th>
             </tr>
             @foreach ($absensi_karyawan as $absen)
@@ -67,8 +67,15 @@
                         <td>{{ $absen->karyawan->project->nama }}</td>
                         <td>{{ ($absen->absen_masuk == null) ? '-' : Str::substr($absen->absen_masuk, 11, 5) }}</td>
                         <td>
+                            <?php 
+                                $masuk = Str::substr($absen->absen_masuk, 11, 5);
+                                $jam_masuk = $absensi->jam_masuk;
+                                
+                                $telat = strtotime($masuk) - strtotime($jam_masuk);
+                                $telat = $telat / 60;
+                            ?>
                             @if ($absen->telat == 0) sukses @endif
-                            @if ($absen->telat == 1) terlambat @endif
+                            @if ($absen->telat == 1) terlambat ( {{ $telat }} menit ) @endif
                             @if ($absen->telat == null) izin @endif
                         </td>
                         <td>
