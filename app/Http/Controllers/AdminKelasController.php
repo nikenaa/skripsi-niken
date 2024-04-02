@@ -58,11 +58,25 @@ class AdminKelasController extends Controller
     public function store(Request $request)
     {
         $projects = $request->nama;
+        $inserted_projects = Project::all()->pluck('nama')->toArray();
+
         $data = [];
         foreach ($projects as $project) {
-            array_push($data, [
-                'nama' => $project
-            ]);
+            if (in_array(strtolower($project), array_map('strtolower', $inserted_projects))) {
+                return redirect('/data_project')->with('pesan', '
+                    <script>
+                        Swal.fire(
+                            "Error!",
+                            "data sudah ada! ('.$project.')",
+                            "error"
+                        )
+                    </script>
+                ');
+            } else {
+                array_push($data, [
+                    'nama' => $project
+                ]);
+            }
         }
 
         Project::insert($data);
