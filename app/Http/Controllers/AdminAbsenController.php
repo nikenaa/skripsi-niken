@@ -31,7 +31,7 @@ class AdminAbsenController extends Controller
                 <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.js"></script>
             ',
             'admin' => Admin::firstWhere('id', session('id')),
-            'data_absensi' => Absensi::orderBy('tgl', 'desc')->get()
+            'data_absensi' => Absensi::withCount('izin')->orderBy('tgl', 'desc')->orderBy('jam_masuk', 'desc')->get(),
         ]);
     }
 
