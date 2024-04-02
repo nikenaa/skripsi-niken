@@ -12,7 +12,7 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $absensi_all = Absensi::whereMonth('tgl', date('m'))->get();
+        $absensi_all = Absensi::whereMonth('tgl', date('m'))->orderBy('tgl', 'desc')->orderBy('jam_masuk', 'desc')->get();
         return view('siswa.index', [
             'judul' => 'Presensi QR | Dashboard Karyawan',
             'plugin_css' => '
