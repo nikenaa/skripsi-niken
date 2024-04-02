@@ -63,7 +63,6 @@
                                                             <a href="javascript:void(0);" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>
                                                             <div class="dropdown-menu">
                                                                 <a class="dropdown-item" href="{{ url('/admin/cetak/' . $absensi->kode) }}" target="_blank">PDF</a>
-                                                                <a href="{{ url('/admin/izin/' . $absensi->kode) }}" class=" dropdown-item"> Lihat Permohonan Izin</a>
                                                                 <form action="{{ url('/admin/absensi/' . $absensi->kode) }}" method="post" style="display: inline">
                                                                     @method('DELETE')
                                                                     @csrf
@@ -71,6 +70,7 @@
                                                                 </form>
                                                             </div>
                                                         </div>
+                                                        <a class="btn btn-primary" href="{{ url('/admin/izin/' . $absensi->kode) }}" >Permohonan Izin ( {{ $absensi->izin_count }} )</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

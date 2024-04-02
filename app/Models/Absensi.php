@@ -30,4 +30,10 @@ class Absensi extends Model
     {
         return $this->hasMany(AbsensiDetail::class, 'kode', 'kode');
     }
+
+    // izinkan
+    public function izin()
+    {
+        return $this->hasMany(AbsensiDetail::class, 'kode', 'kode')->where('suket', '<>', null)->where('keterangan', '<>', null);
+    }
 }
