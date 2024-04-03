@@ -26,7 +26,8 @@
                 <div class="card m-b-30">
                     <div class="card-body">
                         <h3 class="card-title font-16 mt-0">Form Tambah Admin</h3>
-                        <button type="button" class="btn btn-outline-primary mt-2 mb-3 tambah-baris-admin">Tambah Baris</button>
+                        <button type="button" class="btn btn-outline-primary mt-2 mb-3 tambah-baris-admin">Tambah
+                            Baris</button>
                         <form action="{{ url('/admin') }}" method="POST">
                             @csrf
                             <input type="hidden" name="additional" value="additional">
@@ -42,9 +43,15 @@
                                     </thead>
                                     <tbody id="tbody-data-admin">
                                         <tr>
-                                            <td><input type="text" name="nama[]" placeholder="nama" style="border: none; background: transparent; text-align: center;" required></td>
-                                            <td><input type="text" name="username[]" placeholder="username" style="border: none; background: transparent; text-align: center;" required></td>
-                                            <td><input type="text" name="password[]" placeholder="password" style="border: none; background: transparent; text-align: center;" required></td>
+                                            <td><input type="text" name="nama[]" placeholder="nama"
+                                                    style="border: none; background: transparent; text-align: center;"
+                                                    required></td>
+                                            <td><input type="text" name="username[]" placeholder="username"
+                                                    style="border: none; background: transparent; text-align: center;"
+                                                    required></td>
+                                            <td><input type="text" name="password[]" placeholder="password"
+                                                    style="border: none; background: transparent; text-align: center;"
+                                                    required></td>
                                             <td></td>
                                         </tr>
                                     </tbody>
@@ -60,7 +67,8 @@
                 <div class="card m-b-30">
                     <div class="card-body">
                         <h3 class="card-title font-16 mt-0">WARNING!</h3>
-                        <p>Pastikan untuk tidak memasukan data yang sama agar tidak terjadi error atau malfunction kedepannya</p>
+                        <p>Pastikan untuk tidak memasukan data yang sama agar tidak terjadi error atau malfunction
+                            kedepannya</p>
                         <span class="blockquote-footer"></span>
                     </div>
                 </div>
@@ -69,8 +77,8 @@
     </div>
     <!-- end wrapper -->
 </div>
-    <script>
-        // START::ADMIN
+<script>
+    // START::ADMIN
         $('.tambah-baris-admin').click(function() {
             var baru = `
                 <tr>
@@ -94,5 +102,7 @@
         $('tbody').on('click', 'tr td button', function() {
             $(this).parents('tr').remove();
         });
-    </script>
+</script>
+
+{!! session('pesan') !!}
 @endsection

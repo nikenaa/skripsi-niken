@@ -77,7 +77,7 @@
 
 
                            <li class="has-submenu">
-                               <a href="#"><i class="icon-profile"></i> User <i class="mdi mdi-chevron-down mdi-drop"></i></a>
+                               <a href="#"><i class="icon-profile"></i> Pengguna <i class="mdi mdi-chevron-down mdi-drop"></i></a>
                                <ul class="submenu megamenu">
                                    <li>
                                        <ul>
@@ -90,7 +90,7 @@
                            </li>
 
                            <li class="has-submenu">
-                               <a href="{{ url('/data_project') }}"><i class="icon-pencil-ruler"></i> Project</a>
+                               <a href="{{ url('/data_project') }}"><i class="icon-pencil-ruler"></i> Proyek</a>
                            </li>
 
                            <li class="has-submenu">

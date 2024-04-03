@@ -46,7 +46,7 @@
                                             <td align="center">{{ $loop->iteration; }}</td>
                                             <td align="center">{{ $dm->nama; }}</td>
                                             <td align="center">{{ $dm->username; }}</td>
-                                            <td align="center">{{ $dm->created_at }}</td>
+                                            <td align="center">{{ \Carbon\Carbon::parse($dm->created_at)->formatLocalized('%A, %d %B %Y') }}</td>
                                             <td align="center">
                                                 @if ($dm->is_active == 1)
                                                     <span class="badge badge-pill badge-primary">Yes</span>

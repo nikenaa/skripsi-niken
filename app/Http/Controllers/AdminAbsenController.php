@@ -45,10 +45,11 @@ class AdminAbsenController extends Controller
         return view('admin.absensi.create', [
             'judul' => 'Presensi QR | Tambah Absensi',
             'plugin_css' => '
-                
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
             ',
             'plugin_js' => '
-                
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/js/tempus-dominus.min.js" crossorigin="anonymous"></script>
             ',
             'admin' => Admin::firstWhere('id', session('id')),
             'project' => Project::all()
@@ -66,9 +67,9 @@ class AdminAbsenController extends Controller
         if ($request->project_id == 0) {
             $karyawan = Karyawan::all();
         } else {
-            $karyawan = Karyawan::where('project_id', $request->project_id)
-                ->get();
+            $karyawan = Karyawan::where('project_id', $request->project_id)->get();
         }
+
         if ($karyawan->count() == 0) {
             return redirect('/admin/absensi/create')->with('pesan', '
                 <script>
@@ -90,6 +91,7 @@ class AdminAbsenController extends Controller
             'jam_masuk' => $request->jam_masuk,
             'jam_keluar' => $request->jam_keluar,
         ];
+
         $detail_absensi = [];
         foreach ($karyawan as $s) {
             array_push($detail_absensi, [
@@ -97,8 +99,28 @@ class AdminAbsenController extends Controller
                 'karyawan_id' => $s->id,
             ]);
         }
+
+        // check apakah absensi dengan tanggal yang sama dan jam_masuk sama sudah ada
+        $cek_absensi = Absensi::where('project_id', $request->project_id)
+            ->where('tgl', $request->tgl)
+            ->where('jam_masuk', $request->jam_masuk)
+            ->first();
+
+        if ($cek_absensi) {
+            return redirect('/admin/absensi/create')->with('pesan', '
+                <script>
+                    Swal.fire(
+                        "Error!",
+                        "absensi sudah ada! silahkan cek kembali!",
+                        "error"
+                    )
+                </script>
+            ')->withInput();
+        }
+
         Absensi::create($absensi);
         AbsensiDetail::insert($detail_absensi);
+
         return redirect('/data_absensi')->with('pesan', '
             <script>
                 Swal.fire(

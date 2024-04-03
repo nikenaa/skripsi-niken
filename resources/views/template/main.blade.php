@@ -46,7 +46,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        © 2022 E-Presensi QR Laravel 8 <span class="d-none d-sm-inline-block"></span>
+        © 2024 E-Presensi QR Laravel 8 <span class="d-none d-sm-inline-block"></span>
     </footer>
 
     <!-- End Footer -->

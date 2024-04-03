@@ -19,14 +19,14 @@ class AdminSiswaController extends Controller
         return view('admin.siswa.index', [
             'judul' => 'Presensi QR | Data Karyawan',
             'plugin_css' => '
-                <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-                <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+                <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+                <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
             ',
             'plugin_js' => '
-                <script src="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/jquery.dataTables.min.js"></script>
-                <script src="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-                <script src="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/dataTables.responsive.min.js"></script>
-                <script src="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/responsive.bootstrap4.min.js"></script>
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/jquery.dataTables.min.js"></script>
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.responsive.min.js"></script>
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/responsive.bootstrap4.min.js"></script>
             ',
             'admin' => Admin::firstWhere('id', session('id')),
             'data_karyawan' => Karyawan::all(),
@@ -63,13 +63,29 @@ class AdminSiswaController extends Controller
      */
     public function store(Request $request)
     {
+        $inserted_karyawam = Karyawan::all()->pluck('no_induk')->toArray();
+
         $no_induk = $request->no_induk;
         $data = [];
+
         $i = 0;
         $created_at = now();
+
         foreach ($no_induk as $ni) {
+            if (in_array(strtolower($ni), array_map('strtolower', $inserted_karyawam))) {
+                return redirect('/data_karyawan')->with('pesan', '
+                    <script>
+                        Swal.fire(
+                            "Error!",
+                            "no induk sudah ada! (' . $ni . ')",
+                            "error"
+                        )
+                    </script>
+                ');
+            }
+
             array_push($data, [
-                'no_induk'=> $ni,
+                'no_induk' => $ni,
                 'nama' => $request->nama[$i],
                 'project_id' => $request->project_id[$i],
                 'jenis_kelamin' => $request->jenis_kelamin[$i],

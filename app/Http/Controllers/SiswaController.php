@@ -12,7 +12,15 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $absensi_all = Absensi::whereMonth('tgl', date('m'))->orderBy('tgl', 'desc')->orderBy('jam_masuk', 'desc')->get();
+        $absensi_all = Absensi::with(['absensidetail_byid' => function($q) {
+            $q->where('karyawan_id', session('id'));
+        }])->where('tgl', '>=', date('Y-m-d'))->orderBy('tgl', 'desc')->orderBy('jam_masuk', 'desc')->get();
+
+        // unset aabsensidetail dari absensi_all
+        foreach ($absensi_all as $key => $value) {
+            unset($value->absensidetail);
+        }
+        
         return view('siswa.index', [
             'judul' => 'Presensi QR | Dashboard Karyawan',
             'plugin_css' => '

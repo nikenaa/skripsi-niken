@@ -42,7 +42,7 @@
                                 <i class="mdi mdi-google-classroom bg-success text-white"></i>
                             </div>
                             <div>
-                                <h5 class="font-16">Project</h5>
+                                <h5 class="font-16">Proyek</h5>
                             </div>
                             <h3 class="mt-4">{{ $project->count() }}</h3>
                         </div>
@@ -56,7 +56,7 @@
                                 <i class="mdi mdi-clipboard-multiple-outline bg-warning text-white"></i>
                             </div>
                             <div>
-                                <h5 class="font-16">Events</h5>
+                                <h5 class="font-16">Kegiatan</h5>
                             </div>
                             <h3 class="mt-4">{{ $absensi->count() }}</h3>
                         </div>
@@ -70,7 +70,7 @@
                                 <i class="mdi mdi-account-tie-outline bg-danger text-white"></i>
                             </div>
                             <div>
-                                <h5 class="font-16">Admins</h5>
+                                <h5 class="font-16">Admin</h5>
                             </div>
                             <h3 class="mt-4">{{ $data_admin->count() }}</h3>
                         </div>

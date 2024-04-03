@@ -36,12 +36,12 @@ class AdminController extends Controller
         return view('admin.index', [
             'judul' => 'Presensi QR | Data Admin',
             'plugin_css' => '
-                <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-                <link href="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+                <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+                <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
             ',
             'plugin_js' => '
-                <script src="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/jquery.dataTables.min.js"></script>
-                <script src="'. asset('assets/template/presensi-abdul') .'/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/jquery.dataTables.min.js"></script>
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.js"></script>
             ',
             'admin' => Admin::firstWhere('id', session('id')),
             'data_admin' => Admin::all()
@@ -58,10 +58,12 @@ class AdminController extends Controller
         return view('admin.create', [
             'judul' => 'Presensi QR | Tambah Admin',
             'plugin_css' => '
-                
+                <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+                <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
             ',
             'plugin_js' => '
-                
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/jquery.dataTables.min.js"></script>
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.js"></script>
             ',
             'admin' => Admin::firstWhere('id', session('id'))
         ]);
@@ -75,11 +77,27 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+        $inserted_admins = Admin::all()->pluck('username')->toArray();
+
         $admins = [];
         $created_at = now();
+
         $i = 0;
         $namas = $request->nama;
+
         foreach ($namas as $nama) {
+            if (in_array(strtolower($request->username[$i]), array_map('strtolower', $inserted_admins))) {
+                return redirect('/admin/create')->with('pesan', '
+                    <script>
+                        Swal.fire(
+                            "Error!",
+                            "username sudah ada! (' . $request->username[$i] . ')",
+                            "error"
+                        )
+                    </script>
+                ');
+            }
+
             array_push($admins, [
                 'nama' => $nama,
                 'username' => $request->username[$i],
@@ -159,7 +177,7 @@ class AdminController extends Controller
 
             $redirect = '/admin';
         }
-        
+
 
         if ($request->edit == 'admin') {
             // cek apakah ada gambar yang di upload
@@ -174,7 +192,7 @@ class AdminController extends Controller
             $data['nama'] = $request->nama;
             $redirect = '/admin/' . $admin->id;
         }
-        
+
         Admin::where('id', $admin->id)
             ->update($data);
 

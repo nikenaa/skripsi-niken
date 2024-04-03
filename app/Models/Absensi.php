@@ -31,6 +31,11 @@ class Absensi extends Model
         return $this->hasMany(AbsensiDetail::class, 'kode', 'kode');
     }
 
+    public function absensidetail_byid()
+    {
+        return $this->hasOne(AbsensiDetail::class, 'kode', 'kode');
+    }
+
     // izinkan
     public function izin()
     {

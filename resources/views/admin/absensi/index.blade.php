@@ -33,7 +33,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="th">#</th>
-                                                <th class="th">Nama Absensi</th>
+                                                <th class="th">Kegiatan</th>
                                                 <th class="th">Tanggal</th>
                                                 <th class="th">Jam</th>
                                                 <th class="th">Project</th>
@@ -45,7 +45,7 @@
                                                 <tr>
                                                     <td align="center">{{ $loop->iteration }}</td>
                                                     <td align="center">{{ $absensi->nama }}</td>
-                                                    <td align="center">{{ $absensi->tgl }}</td>
+                                                    <td align="center">{{ \Carbon\Carbon::parse($absensi->tgl)->formatLocalized('%A, %d %B %Y') }}</td>
                                                     <td align="center">{{ $absensi->jam_masuk }} - {{ $absensi->jam_keluar }}</td>
                                                     <td align="center">
                                                         {{ ($absensi->project_id == 0) ? 'Semua Project' : $absensi->project->nama }}
@@ -60,7 +60,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="btn-group m-l-2">
-                                                            <a href="javascript:void(0);" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>
+                                                            <a href="javascript:void(0);" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Laporan</a>
                                                             <div class="dropdown-menu">
                                                                 <a class="dropdown-item" href="{{ url('/admin/cetak/' . $absensi->kode) }}" target="_blank">PDF</a>
                                                                 <form action="{{ url('/admin/absensi/' . $absensi->kode) }}" method="post" style="display: inline">

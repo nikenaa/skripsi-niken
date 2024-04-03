@@ -40,34 +40,48 @@
                                         @if ($presensi->project_id == $karyawan->project_id)
                                         <tr>
                                             <td align="center">{{ $presensi->nama }}</td>
-                                            <td align="center">{{ $presensi->tgl }}</td>
+                                            <td align="center">{{ \Carbon\Carbon::parse($presensi->tgl)->formatLocalized('%A, %d %B %Y') }}</td>
                                             <td align="center">{{ $presensi->jam_masuk }} - {{ $presensi->jam_keluar }}</td>
                                             <td align="center">{{ ($presensi->project_id == 0) ? 'Semua Project' :
                                                 $presensi->project->nama }}</td>
                                             <td align="center">
+                                                @if ($presensi->absensidetail_byid && $presensi->absensidetail_byid->izinkan != 1)
                                                 <div class="btn-group">
                                                     <a href="{{ url('siswa/absensi/' . $presensi->kode) }}" class="btn btn-primary">Masuk</a>
-                                                    <a href="{{ url('siswa/absensi_keluar/' . $presensi->kode) }}" class="btn btn-success">Keluar</a>
-                                                    <a href="{{ url('siswa/izin/' . $presensi->kode) }}" class="btn btn-warning">Izin</a>
+                                                    @if ($presensi->absensidetail_byid && $presensi->absensidetail_byid->absen_masuk != null)
+                                                        <a href="{{ url('siswa/absensi_keluar/' . $presensi->kode) }}" class="btn btn-success">Keluar</a>
+                                                    @endif
                                                 </div>
+                                                @endif
+
+                                                @if ($presensi->absensidetail_byid && $presensi->absensidetail_byid->absen_masuk == null)
+                                                    <a href="{{ url('siswa/izin/' . $presensi->kode) }}" class="btn btn-warning">Izin</a>
+                                                @endif
                                             </td>
                                         </tr>
                                         @else
-                                        @if ($presensi->project_id == 0)
-                                        <tr>
-                                            <td align="center">{{ $presensi->nama }}</td>
-                                            <td align="center">{{ $presensi->tgl }}</td>
-                                            <td align="center">{{ $presensi->jam_masuk }} - {{ $presensi->jam_keluar }}</td>
-                                            <td align="center">{{ ($presensi->project_id == 0) ? 'Semua Project' : $presensi->project->nama }}</td>
-                                            <td align="center">
-                                                <div class="btn-group">
-                                                    <a href="{{ url('siswa/absensi/' . $presensi->kode) }}" class="btn btn-primary">Masuk</a>
-                                                    <a href="{{ url('siswa/absensi_keluar/' . $presensi->kode) }}" class="btn btn-success">Keluar</a>
-                                                    <a href="{{ url('siswa/izin/' . $presensi->kode) }}" class="btn btn-warning">Izin</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endif
+                                            @if ($presensi->project_id == 0)
+                                            <tr>
+                                                <td align="center">{{ $presensi->nama }}</td>
+                                                <td align="center">{{ \Carbon\Carbon::parse($presensi->tgl)->formatLocalized('%A, %d %B %Y') }}</td>
+                                                <td align="center">{{ $presensi->jam_masuk }} - {{ $presensi->jam_keluar }}</td>
+                                                <td align="center">{{ ($presensi->project_id == 0) ? 'Semua Project' : $presensi->project->nama }}</td>
+                                                <td align="center">
+                                                    @if ($presensi->absensidetail_byid && $presensi->absensidetail_byid->izinkan != 1)
+                                                        <div class="btn-group">
+                                                            <a href="{{ url('siswa/absensi/' . $presensi->kode) }}" class="btn btn-primary">Masuk</a>
+                                                            @if ($presensi->absensidetail_byid && $presensi->absensidetail_byid->absen_masuk != null)
+                                                                <a href="{{ url('siswa/absensi_keluar/' . $presensi->kode) }}" class="btn btn-success">Keluar</a>
+                                                            @endif
+                                                        </div>
+                                                    @endif
+                                                    
+                                                    @if ($presensi->absensidetail_byid && $presensi->absensidetail_byid->absen_masuk == null)
+                                                        <a href="{{ url('siswa/izin/' . $presensi->kode) }}" class="btn btn-warning">Izin</a>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            @endif
                                         @endif
                                     @endforeach
                                 </tbody>
