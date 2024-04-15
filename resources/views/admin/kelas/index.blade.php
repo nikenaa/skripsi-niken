@@ -96,7 +96,7 @@
 
 <script>
     const datatable_lang_id = "{{ asset('public/assets/plugins/datatables/i18n/id.json') }}";
-    $(".btn-edit-class").click(function(){var a=$(this).data("id"),t=$(this).data("nama"),a="{{ url('/admin/project') }}/"+a;$("input[name=nama]").val(t),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]],language:{url:datatable_lang_id}});
+    $(".btn-edit-class").click(function(){var a=$(this).data("id"),t=$(this).data("nama"),a="{{ url('/admin/project') }}/"+a;$("input[name=nama]").val(t),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["Semua",5,10,25,50]],language:{url:datatable_lang_id}});
 </script>
     {!! session('pesan') !!}
 
