@@ -89,7 +89,7 @@
                         <td>{{ $absen->karyawan->no_induk }}</td>
                         <td>{{ $absen->karyawan->nama }}</td>
                         {{-- <td>{{ $absen->karyawan->project->nama }}</td> --}}
-                        <td>{{ ($absen->absen_masuk == null) ? '-' : Str::substr($absen->absen_masuk, 11, 5) }}</td>
+                        <td>{{ ($absen->absen_masuk != null) ? Str::substr($absen->absen_masuk, 11, 5) : ($absen->izinkan !== null && $absen->izinkan == 0 ? 'tidak hadir' : '-') }}</td>
                         <td>
                             <?php 
                                 $masuk = Str::substr($absen->absen_masuk, 11, 5);
@@ -98,12 +98,14 @@
                                 $telat = strtotime($masuk) - strtotime($jam_masuk);
                                 $telat = $telat / 60;
                             ?>
-                            @if ($absen->telat == 0) sukses @endif
                             @if ($absen->telat == 1) terlambat ( {{ $telat }} menit ) @endif
-                            @if ($absen->telat == null) izin @endif
+                            @if ($absen->izinkan !== null && $absen->izinkan == 1) tidak @endif
+                            @if ($absen->izinkan !== null && $absen->izinkan == 0) tidak hadir @endif
                         </td>
                         <td>
-                            @if ($absen->izinkan !== null)
+                            @if ($absen->izinkan !== null && $absen->izinkan == 0)
+                                tidak hadir
+                            @elseif ($absen->izinkan !== null && $absen->izinkan == 1)
                                 -
                             @else
                                 {{ ($absen->absen_keluar == null) ? 'belum absen' : Str::substr($absen->absen_keluar, 11, 5) }}
