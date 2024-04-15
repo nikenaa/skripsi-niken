@@ -175,7 +175,19 @@ class AdminAbsenController extends Controller
      */
     public function edit(Absensi $absensi)
     {
-        //
+        return view('admin.absensi.create', [
+            'judul' => 'Presensi QR | Edit Absensi',
+            'plugin_css' => '
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
+            ',
+            'plugin_js' => '
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/js/tempus-dominus.min.js" crossorigin="anonymous"></script>
+            ',
+            'admin' => Admin::firstWhere('id', session('id')),
+            'project' => $absensi->project->nama,
+            'absensi' => $absensi,
+        ]);
     }
 
     /**
@@ -187,7 +199,74 @@ class AdminAbsenController extends Controller
      */
     public function update(Request $request, Absensi $absensi)
     {
-        //
+        if ($request->project_id == 0) {
+            $karyawan = Karyawan::all();
+        } else {
+            $karyawan = Karyawan::where('project_id', $request->project_id)->get();
+        }
+
+        if ($karyawan->count() == 0) {
+            return redirect('/admin/absensi/create')->with('pesan', '
+                <script>
+                    Swal.fire(
+                        "Error!",
+                        "data karyawan belum ada!",
+                        "error"
+                    )
+                </script>
+            ')->withInput();
+        }
+
+        $absensi = [
+            'kode' => $absensi->kode,
+            'nama' => $request->nama,
+            'project_id' => $request->project_id,
+            'tgl' => $request->tgl,
+            'jam_masuk' => $request->jam_masuk,
+            'jam_keluar' => $request->jam_keluar,
+        ];
+
+        $old_detail_absensi = AbsensiDetail::where('kode', $absensi['kode'])->get();
+
+        $detail_absensi = [];
+        foreach ($karyawan as $s) {
+            array_push($detail_absensi, [
+                'kode' => $absensi['kode'],
+                'karyawan_id' => $s->id,
+                
+                // get more data from absensi detail and if not exist then set to null 
+                'absen_masuk' => $old_detail_absensi->where('karyawan_id', $s->id)->first()['absen_masuk'] ?? null,
+                'telat' => $old_detail_absensi->where('karyawan_id', $s->id)->first()['telat'] ?? null,
+                'absen_keluar' => $old_detail_absensi->where('karyawan_id', $s->id)->first()['absen_keluar'] ?? null,
+                'izinkan' => $old_detail_absensi->where('karyawan_id', $s->id)->first()['izinkan'] ?? null,
+                'suket' => $old_detail_absensi->where('karyawan_id', $s->id)->first()['suket'] ?? null,
+                'keterangan' => $old_detail_absensi->where('karyawan_id', $s->id)->first()['keterangan'] ?? null,
+            ]);
+        }
+
+        // Absensi::create($absensi);
+        // AbsensiDetail::insert($detail_absensi);
+
+        // update absensi 
+        Absensi::where('kode', $absensi['kode'])->update($absensi);
+
+        // update or create absensi detail
+        foreach ($detail_absensi as $d) {
+            AbsensiDetail::updateOrCreate(
+                ['kode' => $d['kode'], 'karyawan_id' => $d['karyawan_id']],
+                $d
+            );
+        }
+
+        return redirect('/data_absensi')->with('pesan', '
+            <script>
+                Swal.fire(
+                    "Success!",
+                    "absensi diupdate!",
+                    "success"
+                )
+            </script>
+        ');
     }
 
     /**

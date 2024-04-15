@@ -37,6 +37,7 @@
                                                 <th class="th">Tanggal</th>
                                                 <th class="th">Jam</th>
                                                 <th class="th">Proyek</th>
+                                                <th class="th">Permohonan Izin</th>
                                                 <th class="th">Opsi</th>
                                             </tr>
                                         </thead>
@@ -51,6 +52,9 @@
                                                         {{ ($absensi->project_id == 0) ? 'Semua Proyek' : $absensi->project->nama }}
                                                     </td>
                                                     <td align="center">
+                                                        <a class="btn btn-outline-secondary" href="{{ url('/admin/izin/' . $absensi->kode) }}" ><span class="badge badge-light px-2 mr-2">{{ $absensi->izin_count }}</span> Karyawan</a>
+                                                    </td>
+                                                    <td align="center">
 
                                                         <div class="btn-group">
                                                             <a href="javascript:void(0);" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Absen</a>
@@ -59,7 +63,9 @@
                                                                 <a class="dropdown-item" href="{{ url('/admin/absensi_keluar/' . $absensi->kode) }}">Keluar</a>
                                                             </div>
                                                         </div>
-                                                        <div class="btn-group m-l-2">
+                                                        <a class="btn btn-warning" href="{{ url('/admin/absensi/' . $absensi->kode . '/edit') }}" target="_blank">EDIT</a>
+                                                        <a class="btn btn-success" href="{{ url('/admin/cetak/' . $absensi->kode) }}" target="_blank">CETAK</a>
+                                                        {{-- <div class="btn-group m-l-2">
                                                             <a href="javascript:void(0);" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Laporan</a>
                                                             <div class="dropdown-menu">
                                                                 <a class="dropdown-item" href="{{ url('/admin/cetak/' . $absensi->kode) }}" target="_blank">PDF</a>
@@ -69,8 +75,8 @@
                                                                     <button type="submit" class="dropdown-item btn-hapus"> Hapus</button>
                                                                 </form>
                                                             </div>
-                                                        </div>
-                                                        <a class="btn btn-primary" href="{{ url('/admin/izin/' . $absensi->kode) }}" >Permohonan Izin ( {{ $absensi->izin_count }} )</a>
+                                                        </div> --}}
+                                                        {{-- <a class="btn btn-secondary" href="{{ url('/admin/izin/' . $absensi->kode) }}" >Permohonan Izin ( {{ $absensi->izin_count }} )</a> --}}
                                                     </td>
                                                 </tr>
                                             @endforeach
