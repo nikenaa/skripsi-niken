@@ -37,6 +37,13 @@
     {{-- <script src="{{ asset('assets') }}/qr/instascan.min.js"></script> --}}
     {!! $plugin_css !!}
     {!! $plugin_js !!}
+
+    <style>
+        div.dataTables_wrapper div.dataTables_length select {
+            width: 95px !important;
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
