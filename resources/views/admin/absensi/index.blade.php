@@ -8,13 +8,13 @@
             <div class="page-title-box">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
-                        <h4 class="page-title">Absensi List</h4>
+                        <h4 class="page-title">Daftar Absensi</h4>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">E-Presensi</a></li>
                             <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Absensi List</li>
+                            <li class="breadcrumb-item active">Daftar Absensi</li>
                         </ol>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="col-12">
                     <div class="card m-b-30">
                         <div class="card-body">
-                            <h3 class="card-title font-16 mt-0">Absensi Data List</h3>
+                            <h3 class="card-title font-16 mt-0">Data Absensi</h3>
                             <a href="{{ url('/admin/absensi/create') }}" class="btn btn-outline-primary m-b-10">Tambah data Absensi</a>
                             @if ($data_absensi->count() > 0)
                                 <div class="table-responsive">
@@ -36,7 +36,7 @@
                                                 <th class="th">Kegiatan</th>
                                                 <th class="th">Tanggal</th>
                                                 <th class="th">Jam</th>
-                                                <th class="th">Project</th>
+                                                <th class="th">Proyek</th>
                                                 <th class="th">Opsi</th>
                                             </tr>
                                         </thead>
@@ -48,7 +48,7 @@
                                                     <td align="center">{{ \Carbon\Carbon::parse($absensi->tgl)->formatLocalized('%A, %d %B %Y') }}</td>
                                                     <td align="center">{{ $absensi->jam_masuk }} - {{ $absensi->jam_keluar }}</td>
                                                     <td align="center">
-                                                        {{ ($absensi->project_id == 0) ? 'Semua Project' : $absensi->project->nama }}
+                                                        {{ ($absensi->project_id == 0) ? 'Semua Proyek' : $absensi->project->nama }}
                                                     </td>
                                                     <td align="center">
 
@@ -89,7 +89,8 @@
     </div>
 
     <script>
-        $(".btn-hapus").click(function(t){t.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(t=>{t.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
+        const datatable_lang_id = "{{ asset('public/assets/plugins/datatables/i18n/id.json') }}";
+        $(".btn-hapus").click(function(t){t.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(t=>{t.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]],language:{url:datatable_lang_id}});
     </script>
     {!! session('pesan') !!}
 

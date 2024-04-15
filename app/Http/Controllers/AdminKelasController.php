@@ -38,7 +38,7 @@ class AdminKelasController extends Controller
     public function create()
     {
         return view('admin.kelas.create', [
-            'judul' => 'Presensi QR | Tambah Project',
+            'judul' => 'Presensi QR | Tambah Proyek',
             'plugin_css' => '
 
             ',

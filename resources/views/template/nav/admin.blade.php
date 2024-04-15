@@ -31,7 +31,7 @@
                                    </a>
                                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                        <!-- item-->
-                                       <a class="dropdown-item" href="{{ url('/admin/' . $admin->id) }}"><i class="mdi mdi-account-circle"></i> Profile</a>
+                                       <a class="dropdown-item" href="{{ url('/admin/' . $admin->id) }}"><i class="mdi mdi-account-circle"></i> Profil</a>
                                        <div class="dropdown-divider"></div>
                                        <a class="dropdown-item text-danger btn-logout" href="{{ url('/logout') }}"><i class="mdi mdi-power text-danger"></i> Logout</a>
                                    </div>
@@ -81,7 +81,7 @@
                                <ul class="submenu megamenu">
                                    <li>
                                        <ul>
-                                           <li><a href="{{ url('/admin/' . $admin->id) }}">Profile</a></li>
+                                           <li><a href="{{ url('/admin/' . $admin->id) }}">Profil</a></li>
                                            <li><a href="{{ url('/admin') }}">Admin</a></li>
                                            <li><a href="{{ url('/data_karyawan') }}">Karyawan</a></li>
                                        </ul>

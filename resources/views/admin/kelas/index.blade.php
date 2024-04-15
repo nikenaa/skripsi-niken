@@ -8,12 +8,12 @@
         <div class="page-title-box">
             <div class="row align-items-center">
                 <div class="col-sm-6">
-                    <h4 class="page-title">Projects</h4>
+                    <h4 class="page-title">Proyek</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">E-Presensi</a></li>
-                        <li class="breadcrumb-item active">Projects</li>
+                        <li class="breadcrumb-item active">Proyek</li>
                     </ol>
                 </div>
             </div>
@@ -23,8 +23,8 @@
             <div class="col-12">
                 <div class="card m-b-30">
                     <div class="card-body">
-                        <h4 class="card-title font-16 mt-0">Project List</h4>
-                        <a href="{{ url('/admin/project/create') }}" class="btn btn-outline-primary m-b-10">Tambah Project</a>
+                        <h4 class="card-title font-16 mt-0">Daftar Proyek</h4>
+                        <a href="{{ url('/admin/project/create') }}" class="btn btn-outline-primary m-b-10">Tambah Proyek</a>
                         @if ($data_project->count() > 0)
                             <div class="table-responsive">
                                 <table id="datatable" class="table table-bordered nowrap" style="width: 100%;">
@@ -32,7 +32,7 @@
                                         <tr>
                                             <th class="th">#</th>
                                             <th class="th">NAMA</th>
-                                            <th class="th">OPTION</th>
+                                            <th class="th">OPSI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -73,7 +73,7 @@
                 @csrf
                 @method('PUT')
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="modaleditclassLabel">Update Data</h5>
+                    <h5 class="modal-title mt-0" id="modaleditclassLabel">Perbarui Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -95,7 +95,8 @@
 <!-- MODAL EDIT -->
 
 <script>
-    $(".btn-edit-class").click(function(){var a=$(this).data("id"),t=$(this).data("nama"),a="{{ url('/admin/project') }}/"+a;$("input[name=nama]").val(t),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
+    const datatable_lang_id = "{{ asset('public/assets/plugins/datatables/i18n/id.json') }}";
+    $(".btn-edit-class").click(function(){var a=$(this).data("id"),t=$(this).data("nama"),a="{{ url('/admin/project') }}/"+a;$("input[name=nama]").val(t),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]],language:{url:datatable_lang_id}});
 </script>
     {!! session('pesan') !!}
 

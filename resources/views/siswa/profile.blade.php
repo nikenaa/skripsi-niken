@@ -8,13 +8,13 @@
         <div class="page-title-box">
             <div class="row align-items-center">
                 <div class="col-sm-6">
-                    <h4 class="page-title">Profile</h4>
+                    <h4 class="page-title">Profil</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">E-Presensi</a></li>
                         <li class="breadcrumb-item"><a href="javascript:void(0);">Karyawan</a></li>
-                        <li class="breadcrumb-item active">Profile</li>
+                        <li class="breadcrumb-item active">Profil</li>
                     </ol>
                 </div>
             </div>
@@ -32,7 +32,7 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title font-16 mt-0">Update My Profile</h4>
+                        <h4 class="card-title font-16 mt-0">Perbarui Profil</h4>
                         <form action="{{ url('/siswa_profile') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col-md">
                                     <div class="form-group">
-                                        <label for="">Project</label>
+                                        <label for="">Proyek</label>
                                         <input type="text" name="project_id" value="{{ $karyawan->project->nama }}" class="form-control" readonly>
                                     </div>
                                 </div>
@@ -97,15 +97,15 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title font-16 mt-0">Update Password</h4>
+                        <h4 class="card-title font-16 mt-0">Perbarui Password</h4>
                         <form action="{{ url('/siswa/password/' . $karyawan->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="">Current Password</label>
+                                <label for="">Password Sekarang</label>
                                 <input type="password" class="form-control" name="password" required>
                             </div>
                             <div class="form-group">
-                                <label for="">New Password</label>
+                                <label for="">Password Baru</label>
                                 <input type="password" class="form-control" name="password2" required>
                             </div>
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>

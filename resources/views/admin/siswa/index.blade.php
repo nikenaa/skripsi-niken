@@ -32,13 +32,13 @@
                                     <thead>
                                         <tr>
                                             <th class="th">#</th>
-                                            <th class="th">NIM</th>
+                                            <th class="th">NIK</th>
                                             <th class="th">NAMA</th>
-                                            <th class="th">PROJECT</th>
+                                            <th class="th">PROYEK</th>
                                             <th class="th">JK</th>
-                                            <th class="th">ACTIVE</th>
-                                            <th class="th">IMAGE</th>
-                                            <th class="th">OPTION</th>
+                                            <th class="th">AKTIF</th>
+                                            <th class="th">GAMBAR</th>
+                                            <th class="th">OPSI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -93,7 +93,7 @@
                     @csrf
                     @method('PUT')
                     <div class="modal-header">
-                        <h5 class="modal-title mt-0" id="modaleditsiswaLabel">Update Data</h5>
+                        <h5 class="modal-title mt-0" id="modaleditsiswaLabel">Perbarui Data</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -116,9 +116,9 @@
                         <div class="row">
                             <div class="col-md">
                                 <div class="form-group">
-                                    <label for="">Project</label>
+                                    <label for="">Proyek</label>
                                     <select name="project_id" class="form-control">
-                                        <!-- <option value="">Project</option> -->
+                                        <!-- <option value="">Proyek</option> -->
                                         @foreach ($project as $k)
                                             <option value="{{ $k->id }}">{{ $k->nama }}</option>
                                         @endforeach
@@ -145,7 +145,8 @@
     <!-- MODAL EDIT -->
 
     <script>
-        $(".btn-edit-siswa").click(function(){var a=$(this).data("id"),t=$(this).data("no_induk"),i=$(this).data("nama"),n=$(this).data("project_id"),e=$(this).data("is_active"),a="{{ url('/admin/karyawan') }}/"+a;$("input[name=nama]").val(i),$("input[name=no_induk]").val(t),$("select[name=project_id]").val(n),$("select[name=is_active]").val(e),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
+        const datatable_lang_id = "{{ asset('public/assets/plugins/datatables/i18n/id.json') }}";
+        $(".btn-edit-siswa").click(function(){var a=$(this).data("id"),t=$(this).data("no_induk"),i=$(this).data("nama"),n=$(this).data("project_id"),e=$(this).data("is_active"),a="{{ url('/admin/karyawan') }}/"+a;$("input[name=nama]").val(i),$("input[name=no_induk]").val(t),$("select[name=project_id]").val(n),$("select[name=is_active]").val(e),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]],language:{url:datatable_lang_id}});
     </script>
     {!! session('pesan') !!}
 

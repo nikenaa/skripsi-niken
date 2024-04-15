@@ -11,7 +11,7 @@
                     <h4 class="page-title">
                         Absen Keluar {{ $absensi->nama }}
                         <br>
-                        {{ ($absensi->project_id == 0) ? 'Semua Project' : $absensi->project->nama }}
+                        {{ ($absensi->project_id == 0) ? 'Semua Proyek' : $absensi->project->nama }}
                     </h4>
                 </div>
                 <div class="col-sm-6">

@@ -134,7 +134,7 @@ class AdminController extends Controller
     public function show(Admin $admin)
     {
         return view('admin.profile', [
-            'judul' => 'Presensi QR | Profile Admin',
+            'judul' => 'Presensi QR | Profil Admin',
             'plugin_css' => '
                 
             ',

@@ -35,7 +35,7 @@
                                         <tr class="text-center">
                                             <th class="th">NO INDUK</th>
                                             <th class="th">NAMA</th>
-                                            <th class="th">PROJECT</th>
+                                            <th class="th">PROYEK</th>
                                             <th class="th">JENIS KELAMIN</th>
                                             <th>OPSI</th>
                                         </tr>
@@ -94,7 +94,7 @@
                 <td><input type="text" name="nama[]" placeholder="nama" style="border: none; background: transparent; text-align: center;" autocomplete="off" required></td>
                 <td>
                     <select name="project_id[]" style="border: none; background: transparent; text-align: center;">
-                        <option value="">Project</option>
+                        <option value="">Proyek</option>
                          @foreach ($project as $k)
                             <option value="{{ $k->id }}">{{ $k->nama }}</option>
                         @endforeach

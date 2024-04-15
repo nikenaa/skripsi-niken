@@ -8,7 +8,7 @@
                     </div>
                     <div class="desc">
                         <h5 class="font-14 mb-1 text-dark pt-2">{{ $absen->karyawan->nama }}</h5>
-                        <small>Project : {{ $absen->karyawan->project->nama }}</small><br>
+                        <small>Proyek : {{ $absen->karyawan->project->nama }}</small><br>
                         @if ($absen->telat == 1)
                             <span class="badge badge-danger mb-2">Terlambat</span>
                         @endif
@@ -29,7 +29,7 @@
                     </div>
                     <div class="desc">
                         <h5 class="font-14 mb-1 text-dark pt-2">{{ $i->karyawan->nama }}</h5>
-                        <small>Project : {{ $i->karyawan->project->nama }}</small><br>
+                        <small>Proyek : {{ $i->karyawan->project->nama }}</small><br>
                         @if ($i->izinkan == 1)
                             <span class="badge badge-primary mb-2">Izin</span>
                         @endif

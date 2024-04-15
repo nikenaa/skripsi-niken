@@ -36,9 +36,9 @@
                                     <thead>
                                         <tr class="text-center">
                                             <th>NAMA</th>
-                                            <th>USERNAME</th>
+                                            <th>NAMA PENGGUNA</th>
                                             <th>PASSWORD</th>
-                                            <th>OPTION</th>
+                                            <th>OPSI</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody-data-admin">
@@ -46,7 +46,7 @@
                                             <td><input type="text" name="nama[]" placeholder="nama"
                                                     style="border: none; background: transparent; text-align: center;"
                                                     required></td>
-                                            <td><input type="text" name="username[]" placeholder="username"
+                                            <td><input type="text" name="username[]" placeholder="nama pengguna"
                                                     style="border: none; background: transparent; text-align: center;"
                                                     required></td>
                                             <td><input type="text" name="password[]" placeholder="password"
@@ -86,7 +86,7 @@
                         <input type="text" name="nama[]" placeholder="nama" style="border: none; background: transparent; text-align: center;" autocomplete="off" required>
                     </td>
                     <td>
-                        <input type="text" name="username[]" placeholder="username" style="border: none; background: transparent; text-align: center;" autocomplete="off" required>
+                        <input type="text" name="username[]" placeholder="nama pengguna" style="border: none; background: transparent; text-align: center;" autocomplete="off" required>
                     </td>
                     <td>
                         <input type="text" name="password[]" placeholder="password" style="border: none; background: transparent; text-align: center;" autocomplete="off" required>

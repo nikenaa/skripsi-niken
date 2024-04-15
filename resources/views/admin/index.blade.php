@@ -8,13 +8,13 @@
         <div class="page-title-box">
             <div class="row align-items-center">
                 <div class="col-sm-6">
-                    <h4 class="page-title">Admin List</h4>
+                    <h4 class="page-title">Data Admin</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">E-Presensi</a></li>
                         <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Admin List</li>
+                        <li class="breadcrumb-item active">Data Admin</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-body">
-                        <h3 class="card-title font-16 mt-0">Admin Data List</h3>
+                        <h3 class="card-title font-16 mt-0">Admin Data</h3>
                         <a href="{{ url('admin/create') }}" class="btn btn-outline-primary m-b-10">Tambah data Admin</a>
                         @if ($data_admin->count() > 0)
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="width: 100%">
@@ -33,11 +33,11 @@
                                     <tr>
                                         <th class="th">#</th>
                                         <th class="th">NAMA</th>
-                                        <th class="th">USERNAME</th>
-                                        <th class="th">DATE CREATED</th>
-                                        <th class="th">ACTIVE</th>
-                                        <th class="th">IMAGE</th>
-                                        <th class="th">OPTION</th>
+                                        <th class="th">NAMA PENGGUNA</th>
+                                        <th class="th">DIBUAT</th>
+                                        <th class="th">AKTIF</th>
+                                        <th class="th">GAMBAR</th>
+                                        <th class="th">OPSI</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -92,7 +92,7 @@
                 @method('PUT')
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="modaleditadminLabel">Update Data</h5>
+                    <h5 class="modal-title mt-0" id="modaleditadminLabel">Perbarui Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -104,7 +104,7 @@
                         <input class="form-control" type="text" name="nama" required>
                     </div>
                     <div class="form-group">
-                        <label for="">Username</label>
+                        <label for="">Nama Pengguna</label>
                         <input class="form-control" type="text" name="username" required>
                     </div>
                     <div class="form-group">
@@ -130,7 +130,8 @@
 <!-- MODAL EDIT -->
 
 <script>
-    $(".btn-edit-admin").click(function(){var a=$(this).data("id"),t=$(this).data("nama"),n=$(this).data("username"),i=$(this).data("password"),e=$(this).data("is_active"),a="{{ url('/admin') }}/"+a;$("input[name=nama]").val(t),$("input[name=username]").val(n),$("input[name=password]").val(i),$("select[name=is_active]").val(e),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]]});
+    const datatable_lang_id = "{{ asset('public/assets/plugins/datatables/i18n/id.json') }}";
+    $(".btn-edit-admin").click(function(){var a=$(this).data("id"),t=$(this).data("nama"),n=$(this).data("username"),i=$(this).data("password"),e=$(this).data("is_active"),a="{{ url('/admin') }}/"+a;$("input[name=nama]").val(t),$("input[name=username]").val(n),$("input[name=password]").val(i),$("select[name=is_active]").val(e),$("#editForm").attr("action",a)}),$(".btn-hapus").click(function(a){a.preventDefault(),Swal.fire({title:"Are you sure?",text:"Data yang akan dihapus tidak bisa dikembalikan",icon:"warning",showCancelButton:!0,confirmButtonColor:"#3085d6",cancelButtonColor:"#d33",confirmButtonText:"Ya, hapus!",cancelButtonText:"Tidak"}).then(a=>{a.isConfirmed&&$(this).parent("form").submit()})}),$("table").DataTable({scrollX:!0,lengthMenu:[[-1,5,10,25,50],["All",5,10,25,50]],language:{url:datatable_lang_id}});
 </script>
 
 {!! session('pesan') !!}

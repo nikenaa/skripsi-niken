@@ -38,11 +38,11 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="">Project</label>
+                                        <label for="">Proyek</label>
                                         <select name="project_id" id="" class="form-control" required>
                                             @if ($project->count() > 0)
-                                            <option value="">Pilih Project</option>
-                                            <option value="0">Semua Project</option>
+                                            <option value="">Pilih Proyek</option>
+                                            <option value="0">Semua Proyek</option>
                                             @foreach ($project as $k)
                                             <option value="{{ $k->id }}">{{ $k->nama }}</option>
                                             @endforeach

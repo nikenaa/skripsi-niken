@@ -7,13 +7,13 @@
             <div class="page-title-box">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
-                        <h4 class="page-title">Profile</h4>
+                        <h4 class="page-title">Profil</h4>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">E-Presensi</a></li>
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Admin</a></li>
-                            <li class="breadcrumb-item active">Profile</li>
+                            <li class="breadcrumb-item active">Profil</li>
                         </ol>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="col-lg-6 col-md-">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title font-16 mt-0">Update My Profile</h4>
+                            <h4 class="card-title font-16 mt-0">Perbarui Profil</h4>
                             <form action="{{ url('/admin/' . $admin->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -40,7 +40,7 @@
                                 <input type="hidden" class="form-control" name="is_active" value="{{ $admin->is_active }}" required>
 
                                 <div class="form-group">
-                                    <label for="">Username</label>
+                                    <label for="">Nama Pengguna</label>
                                     <input type="text" class="form-control" name="username" value="{{ $admin->username }}" required>
                                 </div>
                                 <div class="form-group">
@@ -59,15 +59,15 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title font-16 mt-0">Update Password</h4>
+                            <h4 class="card-title font-16 mt-0">Perbarui Password</h4>
                             <form action="{{ url('/password_admin/' . $admin->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="">Current Password</label>
+                                    <label for="">Password Sekarang</label>
                                     <input type="password" class="form-control" name="password" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">New Password</label>
+                                    <label for="">Password Baru</label>
                                     <input type="password" class="form-control" name="password2" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>

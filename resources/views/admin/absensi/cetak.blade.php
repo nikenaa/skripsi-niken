@@ -33,13 +33,13 @@
         <table width="100%" class="text-center">
             <tr>
                 <th style="">Nama Absen</th>
-                <th style="">Project</th>
+                <th style="">Proyek</th>
                 <th style="">Tanggal</th>
                 <th style="">Jam</th>
             </tr>
             <tr>
                 <td style=" background: trasparent">{{ $absensi->nama }}</td>
-                <td style=" background: trasparent">{{ ($absensi->project_id == 0) ? 'Semua Project' : $absensi->project->nama }}</td>
+                <td style=" background: trasparent">{{ ($absensi->project_id == 0) ? 'Semua Proyek' : $absensi->project->nama }}</td>
                 <td style=" background: trasparent">{{ $absensi->tgl }}</td>
                 <td style=" background: trasparent">{{ $absensi->jam_masuk }} - {{ $absensi->jam_keluar }}</td>
             </tr>
@@ -52,8 +52,8 @@
             <td>{{ $absensi->nama }}</td>
         </tr>
         <tr>
-            <th width="200px">Project</th>
-            <td>{{ ($absensi->project_id == 0) ? 'Semua Project' : $absensi->project->nama }}</td>
+            <th width="200px">Proyek</th>
+            <td>{{ ($absensi->project_id == 0) ? 'Semua Proyek' : $absensi->project->nama }}</td>
         </tr>
         <tr>
             <th width="200px">Tanggal</th>
@@ -76,7 +76,7 @@
                 <th>NO</th>
                 <th>NIK</th>
                 <th>NAMA</th>
-                {{-- <th>PROJECT</th> --}}
+                {{-- <th>PROYEK</th> --}}
                 <th>WAKTU PRESENSI</th>
                 <th>KETERANGAN</th>
                 <th>WAKTU KELUAR</th>
@@ -122,7 +122,7 @@
             <tr>
                 <th>NAMA KARYAWAN</th>
                 <th>NO INDUK</th>
-                <th>PROJECT</th>
+                <th>PROYEK</th>
             </tr>
             @foreach ($belum_absen as $absen)
                 <tr>

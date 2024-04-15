@@ -8,13 +8,13 @@
         <div class="page-title-box">
             <div class="row align-items-center">
                 <div class="col-sm-6">
-                    <h4 class="page-title">Tambah Project</h4>
+                    <h4 class="page-title">Tambah Proyek</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">E-Presensi</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('/data_project') }}">Project</a></li>
-                        <li class="breadcrumb-item active">Add Project</li>
+                        <li class="breadcrumb-item"><a href="{{ url('/data_project') }}">Proyek</a></li>
+                        <li class="breadcrumb-item active">Tambah Proyek</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div class="col-12">
                 <div class="card m-b-30">
                     <div class="card-body">
-                        <h3 class="card-title font-16 mt-0">Form Tambah Project</h3>
+                        <h3 class="card-title font-16 mt-0">Form Tambah Proyek</h3>
                         <button type="button" class="btn btn-outline-primary mt-2 mb-3 tambah-baris-kelas">Tambah Baris</button>
                         <form action="{{ url('/admin/project') }}" method="POST">
                             @csrf
@@ -68,7 +68,7 @@
             var baru = `
                 <tr>
                     <td>
-                        <input type="text" name="nama[]" placeholder="Nama Project" style="border: none; background: transparent; text-align: center;" autocomplete="off" required>
+                        <input type="text" name="nama[]" placeholder="Nama Proyek" style="border: none; background: transparent; text-align: center;" autocomplete="off" required>
                     </td>
                     <td>
                         <button type="button" class="btn btn-danger btn-xs remove-baris-kelas"><i class="mdi mdi-close-circle"></i></button>

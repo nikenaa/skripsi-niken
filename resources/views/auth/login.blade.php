@@ -294,11 +294,11 @@
                 <form action="{{ url("/login") }}" method="POST" class="login__registre" id="login-in">
                     @csrf
                     <!-- <div class="copyright"><small><strong>E-Presensi | By </strong></small></div> -->
-                    <h1 class="login__title">Sign In</h1>
+                    <h1 class="login__title">Masuk Aplikasi</h1>
 
                     <div class="login__box">
                         <i class='bx bx-user login__icon'></i>
-                        <input type="text" name="username" placeholder="Username" class="login__input" autocomplete="off" required>
+                        <input type="text" name="username" placeholder="Nama Pengguna" class="login__input" autocomplete="off" required>
                     </div>
 
                     <div class="login__box">
@@ -327,7 +327,7 @@
 
                         <div class="login__box">
                             <i class='bx bx-at login__icon'></i>
-                            <input type="text" placeholder="Username" name="username" class="login__input" required autocomplete="off">
+                            <input type="text" placeholder="Nama Pengguna" name="username" class="login__input" required autocomplete="off">
                         </div>
 
                         <div class="login__box">
@@ -335,7 +335,7 @@
                             <input type="password" placeholder="Password" name="password" class="login__input" required autocomplete="off">
                         </div>
 
-                        <button type="submit" class="login__button">Sign Up</button>
+                        <button type="submit" class="login__button">Daftar Akun</button>
                     </div>
                 </form>
             </div>

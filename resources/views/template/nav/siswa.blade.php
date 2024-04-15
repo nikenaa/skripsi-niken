@@ -31,7 +31,7 @@
                                    </a>
                                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                        <!-- item-->
-                                       <a class="dropdown-item" href="{{ url('/siswa_profile') }}"><i class="mdi mdi-account-circle"></i> Profile</a>
+                                       <a class="dropdown-item" href="{{ url('/siswa_profile') }}"><i class="mdi mdi-account-circle"></i> Profil</a>
                                        <div class="dropdown-divider"></div>
                                        <a class="dropdown-item text-danger btn-logout" href="{{ url('/logout') }}"><i class="mdi mdi-power text-danger"></i> Logout</a>
                                    </div>
@@ -75,7 +75,7 @@
                                <a href="{{ url('/siswa_dashboard') }}"><i class="icon-accelerator"></i> Dashboard</a>
                            </li>
                            <li class="has-submenu">
-                               <a href="{{ url('/siswa_profile') }}"><i class="icon-profile"></i> Profile</a>
+                               <a href="{{ url('/siswa_profile') }}"><i class="icon-profile"></i> Profil</a>
                            </li>
                            <li class="has-submenu">
                                <a href="{{ url('/siswa/absensi') }}"><i class="icon-todolist"></i> Absensi</a>

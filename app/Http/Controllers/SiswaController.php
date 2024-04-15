@@ -36,7 +36,7 @@ class SiswaController extends Controller
     public function profile()
     {
         return view('siswa.profile', [
-            'judul' => 'Presensi QR | Profile Karyawan',
+            'judul' => 'Presensi QR | Profil Karyawan',
             'plugin_css' => '
                 
             ',

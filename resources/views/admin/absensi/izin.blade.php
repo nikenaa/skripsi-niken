@@ -35,7 +35,7 @@
                                                 <th class="th">#</th>
                                                 <th class="th">NAMA</th>
                                                 <th class="th">NO INDUK</th>
-                                                <th class="th">PROJECT</th>
+                                                <th class="th">PROYEK</th>
                                                 <th class="th">IZIN</th>
                                                 <th class="th">SUKET</th>
                                                 <th class="th">STATUS</th>

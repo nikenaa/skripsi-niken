@@ -31,7 +31,7 @@
                                         <th class="th">NAMA</th>
                                         <th class="th">TANGGAL</th>
                                         <th class="th">JAM</th>
-                                        <th class="th">PROJECT</th>
+                                        <th class="th">PROYEK</th>
                                         <th class="th">ABSEN</th>
                                     </tr>
                                 </thead>
@@ -42,7 +42,7 @@
                                             <td align="center">{{ $presensi->nama }}</td>
                                             <td align="center">{{ \Carbon\Carbon::parse($presensi->tgl)->formatLocalized('%A, %d %B %Y') }}</td>
                                             <td align="center">{{ $presensi->jam_masuk }} - {{ $presensi->jam_keluar }}</td>
-                                            <td align="center">{{ ($presensi->project_id == 0) ? 'Semua Project' :
+                                            <td align="center">{{ ($presensi->project_id == 0) ? 'Semua Proyek' :
                                                 $presensi->project->nama }}</td>
                                             <td align="center">
                                                 @if ($presensi->absensidetail_byid && $presensi->absensidetail_byid->izinkan != 1)
@@ -65,7 +65,7 @@
                                                 <td align="center">{{ $presensi->nama }}</td>
                                                 <td align="center">{{ \Carbon\Carbon::parse($presensi->tgl)->formatLocalized('%A, %d %B %Y') }}</td>
                                                 <td align="center">{{ $presensi->jam_masuk }} - {{ $presensi->jam_keluar }}</td>
-                                                <td align="center">{{ ($presensi->project_id == 0) ? 'Semua Project' : $presensi->project->nama }}</td>
+                                                <td align="center">{{ ($presensi->project_id == 0) ? 'Semua Proyek' : $presensi->project->nama }}</td>
                                                 <td align="center">
                                                     @if ($presensi->absensidetail_byid && $presensi->absensidetail_byid->izinkan != 1)
                                                         <div class="btn-group">
