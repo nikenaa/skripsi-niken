@@ -70,7 +70,7 @@
     </table>
     
     @if ($absensi_karyawan->count() > 0)
-        <h4 class="mt-4" style="text-align: center;">Daftar Presensi</h4>
+        <h4 class="mt-4" style="text-align: center;">Daftar Karyawan Sudah Absen</h4>
         <table class="table text-center" width="100%">
             <tr>
                 <th>NO</th>
@@ -119,18 +119,20 @@
     @endif
     
     @if ($belum_absen->count() > 0)
-        <h4 class="mt-4" style="text-align: center;">List Belum Presensi</h4>
+        <h4 class="mt-4" style="text-align: center;">Daftar Karyawan Belum Absen</h4>
         <table class="table text-center" width="100%">
             <tr>
+                <th>NO</th>
                 <th>NAMA KARYAWAN</th>
                 <th>NO INDUK</th>
-                <th>PROYEK</th>
+                {{-- <th>PROYEK</th> --}}
             </tr>
             @foreach ($belum_absen as $absen)
                 <tr>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $absen->karyawan->nama }}</td>
                     <td>{{ $absen->karyawan->no_induk }}</td>
-                    <td>{{ $absen->karyawan->project->nama }}</td>
+                    {{-- <td>{{ $absen->karyawan->project->nama }}</td> --}}
                 </tr>
             @endforeach
         </table>
