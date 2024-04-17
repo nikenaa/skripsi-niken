@@ -56,7 +56,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a href="{{ url('/admin') }}" class="btn btn-outline-warning mt-3">Back</a>
+                                <a href="{{ url('/admin') }}" class="btn btn-outline-warning mt-3">Kembali</a>
                                 <button type=" submit" class="btn btn-outline-success mt-3 ml-1">Simpan</button>
                             </div>
                         </form>
