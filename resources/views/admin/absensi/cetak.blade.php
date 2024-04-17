@@ -99,7 +99,7 @@
                                 $telat = $telat / 60;
                             ?>
                             @if ($absen->telat == 1) terlambat ( {{ $telat }} menit ) @endif
-                            @if ($absen->izinkan !== null && $absen->izinkan == 1) tidak @endif
+                            @if ($absen->izinkan !== null && $absen->izinkan == 1) izin @endif
                             @if ($absen->izinkan !== null && $absen->izinkan == 0) tidak hadir @endif
                         </td>
                         <td>
