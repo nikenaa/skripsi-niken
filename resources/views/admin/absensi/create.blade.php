@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ url('/admin/data_absensi') }}" class="btn btn-warning">Kembali</a>
+                            <a href="{{ url('/data_absensi') }}" class="btn btn-warning">Kembali</a>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </form>
                     </div>
