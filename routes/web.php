@@ -55,6 +55,7 @@ Route::post('/siswa_profile', [SiswaController::class, 'edit'])->middleware('is_
 Route::post('/siswa/password/{siswa:id}', [SiswaController::class, 'password'])->middleware('is_siswa');
 
 Route::resource('/siswa/absensi', SiswaAbsenController::class)->middleware('is_siswa');
+Route::get('/siswa/riwayat/absensi', [SiswaAbsenController::class, 'history'])->middleware('is_siswa');
 Route::post('/siswa/absen_masuk', [SiswaAbsenController::class, 'absen_masuk'])->middleware('is_siswa');
 Route::get('/siswa/absensi_keluar/{absensi:kode}', [SiswaAbsenController::class, 'show_keluar'])->middleware('is_siswa');
 Route::post('/siswa/absen_keluar', [SiswaAbsenController::class, 'absen_keluar'])->middleware('is_siswa');

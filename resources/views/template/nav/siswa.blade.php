@@ -80,6 +80,9 @@
                            <li class="has-submenu">
                                <a href="{{ url('/siswa/absensi') }}"><i class="icon-todolist"></i> Absensi</a>
                            </li>
+                           <li class="has-submenu">
+                               <a href="{{ url('/siswa/riwayat/absensi') }}"><i class="fa fa-history"></i> Riwayat Absensi</a>
+                           </li>
 
                        </ul>
                        <!-- End navigation menu -->

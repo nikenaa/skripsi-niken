@@ -18,7 +18,7 @@ class SiswaAbsenController extends Controller
      */
     public function index()
     {
-        $absensi_all = Absensi::with(['absensidetail_byid' => function($q) {
+        $absensi_all = Absensi::with(['absensidetail_byid' => function ($q) {
             $q->where('karyawan_id', session('id'));
         }])->orderBy('tgl', 'desc')->orderBy('jam_masuk', 'desc')->get();
 
@@ -88,6 +88,7 @@ class SiswaAbsenController extends Controller
             'absensi_karyawan' => $absensi_karyawan,
         ]);
     }
+
     public function show_keluar(Absensi $absensi)
     {
         $absensi_karyawan = AbsensiDetail::where('kode', $absensi->kode)
@@ -169,6 +170,7 @@ class SiswaAbsenController extends Controller
             return 'success';
         }
     }
+
     public function absen_keluar(Request $request)
     {
         $absensi = Absensi::firstWhere('kode', $request->content);
@@ -187,6 +189,7 @@ class SiswaAbsenController extends Controller
             return 'success';
         }
     }
+
     public function izin(Absensi $absensi)
     {
         $absensi_karyawan = AbsensiDetail::where('kode', $absensi->kode)
@@ -205,6 +208,7 @@ class SiswaAbsenController extends Controller
             'absensi_karyawan' => $absensi_karyawan,
         ]);
     }
+
     public function izin_(Absensi $absensi, Request $request)
     {
         $data['izinkan'] = 0;
@@ -225,8 +229,35 @@ class SiswaAbsenController extends Controller
             </script>
         ');
     }
+
     public function suket($suket)
     {
         return Storage::download('assets/izin/' . $suket);
+    }
+
+    public function history()
+    {
+        $absensi_all = Absensi::with(['absensidetail_byid' => function ($q) {
+            $q->where('karyawan_id', session('id'));
+        }])->orderBy('tgl', 'desc')->orderBy('jam_masuk', 'desc')->get();
+
+        // unset aabsensidetail dari absensi_all
+        foreach ($absensi_all as $key => $value) {
+            unset($value->absensidetail);
+        }
+
+        return view('siswa.absensi.history', [
+            'judul' => 'Presensi QR | Absensi',
+            'plugin_css' => '
+                <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+                <link href="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+            ',
+            'plugin_js' => '
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/jquery.dataTables.min.js"></script>
+                <script src="' . asset('assets/template/presensi-abdul') . '/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+            ',
+            'karyawan' => Karyawan::firstWhere('id', session('id')),
+            'presensi_list' => $absensi_all,
+        ]);
     }
 }
