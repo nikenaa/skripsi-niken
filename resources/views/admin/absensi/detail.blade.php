@@ -47,7 +47,7 @@
                             </tr>
                             <tr>
                                 <th width="200px">Jumlah Peserta</th>
-                                <td>{{ $absensi_karyawan->count() }}</td>
+                                <td>{{ $absensi_karyawan->count() + $belum_absen->count() }}</td>
                             </tr>
                         </table>
                     </div>
