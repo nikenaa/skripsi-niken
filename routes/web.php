@@ -43,6 +43,7 @@ Route::post('/admin/belum_absen', [AdminAbsenController::class, 'belum_absen'])-
 Route::post('/admin/belum_absen_keluar', [AdminAbsenController::class, 'belum_absen_keluar'])->middleware('is_admin');
 Route::get('/admin/cetakqr/{kode}', [AdminAbsenController::class, 'cetakqr'])->middleware('is_admin');
 Route::get('/admin/cetak/{absensi:kode}', [AdminAbsenController::class, 'cetak'])->middleware('is_admin');
+Route::get('/admin/detail/{absensi:kode}', [AdminAbsenController::class, 'detail'])->middleware('is_admin');
 Route::get('/admin/absensi_keluar/{absensi:kode}', [AdminAbsenController::class, 'show_keluar'])->middleware('is_admin');
 Route::get('/admin/izin/{absensi:kode}', [AdminAbsenController::class, 'izin'])->middleware('is_admin');
 Route::get('/suket_izin/{suket}', [AdminAbsenController::class, 'suket'])->middleware('is_admin');

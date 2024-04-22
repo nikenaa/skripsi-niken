@@ -319,6 +319,33 @@ class AdminAbsenController extends Controller
             'absensi' => Absensi::firstWhere('kode', $kode)
         ]);
     }
+    public function detail(Absensi $absensi)
+    {
+        $absensi_karyawan = AbsensiDetail::where('kode', $absensi->kode)
+            ->whereNotNull('updated_at')
+            ->get();
+
+        $belum_absen = AbsensiDetail::where('kode', $absensi->kode)
+            ->whereNull('absen_masuk')
+            ->whereNull('izinkan')
+            ->get();
+
+        return view('admin.absensi.detail', [
+            'judul' => 'Presensi QR | Edit Absensi',
+            'plugin_css' => '
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
+            ',
+            'plugin_js' => '
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/js/tempus-dominus.min.js" crossorigin="anonymous"></script>
+            ',
+            'admin' => Admin::firstWhere('id', session('id')),
+            
+            'absensi' => $absensi,
+            'absensi_karyawan' => $absensi_karyawan,
+            'belum_absen' => $belum_absen
+        ]);
+    }
     public function cetak(Absensi $absensi)
     {
         $absensi_karyawan = AbsensiDetail::where('kode', $absensi->kode)
