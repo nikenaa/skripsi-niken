@@ -81,7 +81,7 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="">Tanggal</label>
-                                        <input type="date" name="tgl" value="{{ old('tgl') ?  old('tgl') : (isset($absensi) ? $absensi->tgl : '') }}" class="form-control" required>
+                                        <input type="date" name="tgl" value="{{ old('tgl') ?  old('tgl') : (isset($absensi) ? $absensi->tgl : '') }}" class="form-control" required min="{{ date('Y-m-d') }}">
                                     </div>
                                 </div>
                             </div>
