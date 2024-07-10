@@ -51,46 +51,43 @@
                                     <tr>
                                         <td align="center">{{ $loop->iteration }}</td>
                                         <td align="center">{{ $absensi->nama }}</td>
-                                        <td align="center">{{ \Carbon\Carbon::parse($absensi->tgl)->formatLocalized('%A,
-                                            %d %B %Y') }}</td>
+                                        <td align="center">{{ \Carbon\Carbon::parse($absensi->tgl)->formatLocalized('%A, %d %B %Y') }}</td>
                                         <td align="center">{{ $absensi->jam_masuk }} - {{ $absensi->jam_keluar }}</td>
                                         <td align="center">
+                                            @if ($absensi->project->deleted_at)
+                                                <span class="badge badge-pill badge-danger mr-2">Closed</span>
+                                            @endif
                                             {{ ($absensi->project_id == 0) ? 'Semua Proyek' : $absensi->project->nama }}
                                         </td>
                                         <td align="center">
-                                            <a class="btn btn-outline-secondary"
-                                                href="{{ url('/admin/izin/' . $absensi->kode) }}"><span
-                                                    class="badge badge-light px-2 mr-2">{{ $absensi->izin_count
-                                                    }}</span> Karyawan</a>
+                                            <a class="btn btn-outline-secondary" href="{{ url('/admin/izin/' . $absensi->kode) }}"><span class="badge badge-light px-2 mr-2">{{ $absensi->izin_count }}</span> Karyawan</a>
                                         </td>
                                         <td align="center">
                                             <div class="btn-group">
-                                                <a href="javascript:void(0);"
-                                                    class="btn btn-sm btn-primary dropdown-toggle"
-                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">ABSEN <span class="mr-1"></span></a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item"
-                                                        href="{{ url('/admin/absensi/' . $absensi->kode) }}">Masuk</a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ url('/admin/absensi_keluar/' . $absensi->kode) }}">Keluar</a>
-                                                </div>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ABSEN <span class="mr-1"></span></a>
+                                                @if ($absensi->project->deleted_at)
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" style="cursor: not-allowed; opacity: 0.8;">Masuk</a>
+                                                        <a class="dropdown-item" style="cursor: not-allowed; opacity: 0.8;">Keluar</a>
+                                                    </div>
+                                                @else
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="{{ url('/admin/absensi/' . $absensi->kode) }}">Masuk</a>
+                                                        <a class="dropdown-item" href="{{ url('/admin/absensi_keluar/' . $absensi->kode) }}">Keluar</a>
+                                                    </div>
+                                                @endif
                                             </div>
                                             
                                             @if ($now->diffInMinutes($mulai, false) < 0)
-                                            <a class="btn btn-sm text-white btn-warning" style="cursor: not-allowed; opacity: 0.8;">EDIT</a>
+                                                <a class="btn btn-sm text-white btn-warning" style="cursor: not-allowed; opacity: 0.8;">EDIT</a>
+                                            @elseif ($absensi->project->deleted_at != null)
+                                                <a class="btn btn-sm text-white btn-warning" style="cursor: not-allowed; opacity: 0.8;">EDIT</a>
                                             @else
-                                            <a class="btn btn-sm
-                                                btn-warning" href="{{ url('/admin/absensi/' . $absensi->kode . '/edit') }}"
-                                                target="_blank" disabled>EDIT</a>
+                                                <a class="btn btn-sm btn-warning" href="{{ url('/admin/absensi/' . $absensi->kode . '/edit') }}"target="_blank" disabled>EDIT</a>
                                             @endif
 
-                                            <a class="btn btn-sm btn-secondary"
-                                                href="{{ url('/admin/detail/' . $absensi->kode) }}" target="_blank"
-                                                title="detail"><i class="fa fa-search"></i></a>
-                                            <a class="btn btn-sm btn-success"
-                                                href="{{ url('/admin/cetak/' . $absensi->kode) }}" target="_blank"
-                                                title="cetak"><i class="fa fa-print"></i></a>
+                                            <a class="btn btn-sm btn-secondary" href="{{ url('/admin/detail/' . $absensi->kode) }}" target="_blank" title="detail"><i class="fa fa-search"></i></a>
+                                            <a class="btn btn-sm btn-success" href="{{ url('/admin/cetak/' . $absensi->kode) }}" target="_blank" title="cetak"><i class="fa fa-print"></i></a>
                                                 
                                             {{-- <div class="btn-group m-l-2">
                                                 <a href="javascript:void(0);" class="btn btn-primary dropdown-toggle"

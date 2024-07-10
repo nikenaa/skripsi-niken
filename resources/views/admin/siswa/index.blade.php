@@ -48,7 +48,10 @@
                                                 <td align="center">{{ $karyawan->no_induk }}</td>
                                                 <td align="center">{{ $karyawan->nama }}</td>
                                                 <td align="center">
-                                                    {{ $karyawan->project->nama }}
+                                                    @if ($karyawan->project->deleted_at)
+                                                        <span class="badge badge-pill badge-danger mr-2">Closed</span>
+                                                    @endif
+                                                    {{ $karyawan->project->nama }} 
                                                 </td>
                                                 <td align="center">{{ $karyawan->jenis_kelamin }}</td>
                                                 <td align="center">

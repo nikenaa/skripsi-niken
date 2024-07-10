@@ -76,7 +76,9 @@
                                 @foreach ($absensi_karyawan as $absen)
                                     @if ($absen->absen_masuk !== null || $absen->izinkan !== null)
                                         <?php $no = $loop->iteration ?>
-                                        <tr>
+                                        
+                                        {{-- if $absen->karyawan != null background color of tr light red --}}
+                                        <tr @if($absen->karyawan->deleted_at != null) style="background-color: #ffcccc" @endif>
                                             <td>{{ $no }}</td>
                                             <td>{{ $absen->karyawan->no_induk }}</td>
                                             <td>{{ $absen->karyawan->nama }}</td>
@@ -105,6 +107,10 @@
                                                     
                                                     @if($absen->absen_masuk != null && $absen->absen_keluar != null && Str::substr($absen->absen_keluar, 11, 8) < $absensi->jam_keluar)
                                                         <span class="badge badge-warning">keluar sebelum waktunya</span>
+                                                    @endif
+
+                                                    @if($absen->karyawan->deleted_at != null)
+                                                        <span class="badge badge-danger">deleted</span>
                                                     @endif
                                                 </div>
                                             </td>
@@ -140,10 +146,17 @@
                             @if ($belum_absen->count() > 0)
                                 @foreach ($belum_absen as $absen)
                                     <?php $no = $no + 1 ?>
-                                    <tr>
+                                    <tr @if($absen->karyawan->deleted_at != null) style="background-color: #ffcccc" @endif>
                                         <td>{{ $no }}</td>
                                         <td>{{ $absen->karyawan->no_induk }}</td>
                                         <td>{{ $absen->karyawan->nama }}</td>
+                                        <td> 
+                                            @if ($absen->karyawan->deleted_at != null)
+                                                <span class="badge badge-danger">deleted</span>
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
