@@ -44,6 +44,10 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($data_absensi as $absensi)
+                                    <?php $now = \Carbon\Carbon::now() ?>
+                                    <?php $mulai = \Carbon\Carbon::parse($absensi->tgl . ' ' . $absensi->jam_masuk) ?>
+                                    <?php $selesai = \Carbon\Carbon::parse($absensi->tgl . ' ' . $absensi->jam_keluar) ?>
+
                                     <tr>
                                         <td align="center">{{ $loop->iteration }}</td>
                                         <td align="center">{{ $absensi->nama }}</td>
@@ -72,15 +76,22 @@
                                                         href="{{ url('/admin/absensi_keluar/' . $absensi->kode) }}">Keluar</a>
                                                 </div>
                                             </div>
-                                            <a class="btn btn-sm btn-warning"
-                                                href="{{ url('/admin/absensi/' . $absensi->kode . '/edit') }}"
-                                                target="_blank">EDIT</a>
+                                            
+                                            @if ($now->diffInMinutes($mulai, false) < 0)
+                                            <a class="btn btn-sm text-white btn-warning" style="cursor: not-allowed; opacity: 0.8;">EDIT</a>
+                                            @else
+                                            <a class="btn btn-sm
+                                                btn-warning" href="{{ url('/admin/absensi/' . $absensi->kode . '/edit') }}"
+                                                target="_blank" disabled>EDIT</a>
+                                            @endif
+
                                             <a class="btn btn-sm btn-secondary"
                                                 href="{{ url('/admin/detail/' . $absensi->kode) }}" target="_blank"
                                                 title="detail"><i class="fa fa-search"></i></a>
                                             <a class="btn btn-sm btn-success"
                                                 href="{{ url('/admin/cetak/' . $absensi->kode) }}" target="_blank"
                                                 title="cetak"><i class="fa fa-print"></i></a>
+                                                
                                             {{-- <div class="btn-group m-l-2">
                                                 <a href="javascript:void(0);" class="btn btn-primary dropdown-toggle"
                                                     data-toggle="dropdown" aria-haspopup="true"
