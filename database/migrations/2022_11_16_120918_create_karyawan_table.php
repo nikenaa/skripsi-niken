@@ -25,6 +25,7 @@ class CreateKaryawanTable extends Migration
             $table->integer('is_active');
             $table->string('foto');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
