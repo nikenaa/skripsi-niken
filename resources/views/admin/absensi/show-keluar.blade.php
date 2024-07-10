@@ -30,9 +30,10 @@
                 <div class="mt-2">
                     <center>
                         <div id="waktu">
-                            <div class="alert alert-danger">Belum saatnya Absen Keluar, atau belum saatnya presensi dimulai !</div>
+                            <div class="alert alert-danger"></div>
                         </div>
                         <div id="qrEvent" style="display: none;"></div>
+                        <div id="sudah-selesai" style="display: none;" class="alert alert-info">Absensi telah selesai!</div>
                     </center>
                 </div>
                 <a href="{{ url('/admin/cetakqr/' . $absensi->kode) }}" target="_blank"
@@ -82,7 +83,9 @@
 <!-- end wrapper -->
 
 <script>
-    new QRCode(document.getElementById("qrEvent"), "{{ $absensi->kode }}"), setInterval(() => {
+    new QRCode(document.getElementById("qrEvent"), "{{ $absensi->kode }}");
+
+    function updatePresensiStatus() {
         $.ajax({
             headers: {
                 "X-CSRF-TOKEN": "{{ csrf_token() }}"
@@ -93,14 +96,12 @@
                 _token: "{{ csrf_token() }}"
             },
             url: "{{ url('/admin/sudah_absen_keluar') }}",
-            async: !0,
+            async: true,
             success: function(e) {
                 $("#sudah-absen").html(e)
             }
-        })
-    }, 3e3), 
+        });
 
-    setInterval(() => {
         $.ajax({
             headers: {
                 "X-CSRF-TOKEN": "{{ csrf_token() }}"
@@ -111,19 +112,46 @@
                 _token: "{{ csrf_token() }}"
             },
             url: "{{ url('/admin/belum_absen_keluar') }}",
-            async: !0,
+            async: true,
             success: function(e) {
                 $("#belum-absen").html(e)
             }
-        })
-    }, 3e3);
+        });
+    }
 
-    var countDownDate = new Date("{{ $absensi->tgl }} {{ $absensi->jam_masuk }}").getTime();
-    x = setInterval(function() {
-        var e = (new Date).getTime();
-        //     e = countDownDate - e;
-        // Math.floor(e / 864e5), Math.floor(e % 864e5 / 36e5), Math.floor(e % 36e5 / 6e4), Math.floor(e % 6e4 / 1e3);
-        e > countDownDate && (clearInterval(x), $("#qrEvent").css("display", "block"), $("#waktu").css("display", "none"), $(".cetak").css("display", "inline-block"))
+    setInterval(updatePresensiStatus, 3000);
+
+    var waktuMasuk = new Date("{{ $absensi->tgl }} {{ $absensi->jam_masuk }}").getTime();
+    var waktuKeluar = new Date("{{ $absensi->tgl }} {{ $absensi->jam_keluar }}").getTime();
+    var waktuKeluarMin15 = waktuKeluar - 15 * 60 * 1000; // 15 minutes before jam_keluar
+    var waktuKeluarPlus30 = waktuKeluar + 30 * 60 * 1000; // 30 minutes after jam_keluar
+
+    setInterval(function() {
+        var currentTime = new Date().getTime();
+
+        if (currentTime >= waktuKeluarMin15 && currentTime <= waktuKeluarPlus30) {
+            $("#qrEvent").css("display", "block");
+            $("#waktu").css("display", "none");
+            $("#waktu").children().text("");            // <- clear the text 
+            $(".cetak").css("display", "inline-block");
+
+            if (currentTime > waktuKeluarPlus30) {
+                $("#qrEvent").css("display", "none");
+                $("#waktu").css("display", "block");
+                $("#waktu").children().text("Waktu Absen Keluar telah berakhir!"); // <- set the text
+                $(".cetak").css("display", "none");
+            }
+        } else if (currentTime < waktuKeluarMin15) {
+            $("#waktu").css("display", "block");
+            $("#waktu").children().text("Belum saatnya Absen Keluar, atau belum saatnya presensi dimulai !"); // <- set the text
+            $("#qrEvent").css("display", "none");
+            $(".cetak").css("display", "none");
+        } else {
+            $("#qrEvent").css("display", "none");
+            $("#waktu").css("display", "block");
+            $("#waktu").children().text("Waktu Absen telah berakhir!"); // <- set the text
+            $(".cetak").css("display", "none");
+        }
     }, 500);
 </script>
 {!! session('pesan') !!}
