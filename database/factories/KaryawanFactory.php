@@ -13,6 +13,7 @@ class KaryawanFactory extends Factory
      */
     public function definition()
     {
+        $this->faker = \Faker\Factory::create('id_ID');
         $no_induk = $this->faker->unique()->randomNumber(5);
 
         return [
@@ -20,7 +21,7 @@ class KaryawanFactory extends Factory
             'nama'         => $this->faker->name(),
             'project_id'   => $this->getProjectId(),
             'jenis_kelamin'=> $this->faker->randomElement(['Laki-laki', 'Perempuan']),
-            'username'     => $this->faker->userName(),
+            'username'     => $no_induk,
             // 'password'     => bcrypt($no_induk),
             'password'     => $no_induk,
             'role'         => $this->faker->randomElement([1, 2, 3]),
